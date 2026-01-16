@@ -1,0 +1,1917 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Annuaire Alumni | IUT Saint-Pierre - Réseau des anciens étudiants TC</title>
+    <meta name="description" content="Annuaire complet des anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre. Recherchez et connectez-vous avec les diplômés.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== FILTRES & RECHERCHE ===== */
+        .directory-filters {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin: -50px auto 50px;
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+        }
+
+        .filters-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .filter-group label {
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 10px;
+            font-size: 0.95rem;
+        }
+
+        .filter-select, .filter-input {
+            padding: 14px 18px;
+            border-radius: var(--radius);
+            border: 2px solid var(--gray-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .filter-select:focus, .filter-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .promo-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .promo-tab {
+            padding: 10px 22px;
+            background-color: #f1f5f9;
+            border: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: var(--transition);
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .promo-tab:hover {
+            background-color: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .promo-tab.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        /* ===== ALUMNI GRID ===== */
+        .alumni-section {
+            padding: 60px 0 100px;
+        }
+
+        .alumni-stats {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .stats-info {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .stat-badge {
+            background-color: var(--gray-light);
+            color: var(--dark);
+            padding: 6px 15px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-badge .highlight {
+            color: var(--primary);
+        }
+
+        .view-toggle {
+            display: flex;
+            gap: 10px;
+        }
+
+        .view-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--gray-light);
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .view-btn.active {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .view-btn:hover {
+            background-color: var(--primary);
+            color: var(--white);
+        }
+
+        .alumni-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .alumni-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .alumni-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .alumni-avatar {
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .avatar-initials {
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--white);
+            opacity: 0.9;
+        }
+
+        .promo-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .alumni-info {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .alumni-name {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .alumni-details {
+            margin-bottom: 20px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .alumni-contact {
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--dark-light);
+            font-size: 0.95rem;
+        }
+
+        .contact-item i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .contact-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .contact-btn {
+            flex: 1;
+            padding: 10px;
+            background-color: var(--primary);
+            color: var(--white);
+            border-radius: var(--radius);
+            text-align: center;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .contact-btn:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .contact-btn.secondary {
+            background-color: var(--gray-light);
+            color: var(--dark);
+        }
+
+        .contact-btn.secondary:hover {
+            background-color: #d1d5db;
+        }
+
+        /* ===== PAGINATION ===== */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 50px;
+        }
+
+        .page-btn {
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--white);
+            color: var(--dark);
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+        }
+
+        .page-btn:hover, .page-btn.active {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+
+        .page-btn.disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* ===== NO RESULTS ===== */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 80px 20px;
+        }
+
+        .no-results-icon {
+            font-size: 4rem;
+            color: var(--gray-light);
+            margin-bottom: 20px;
+        }
+
+        .no-results h3 {
+            font-size: 1.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+        }
+
+        .no-results p {
+            color: var(--gray);
+            max-width: 500px;
+            margin: 0 auto 30px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .alumni-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .page-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .directory-filters {
+                margin: -30px auto 30px;
+                padding: 20px;
+            }
+            
+            .alumni-stats {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 20px;
+            }
+            
+            .view-toggle {
+                align-self: flex-end;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .filters-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .alumni-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .promo-tabs {
+                justify-content: center;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Alumni TC</h1>
+                        <p>IUT de Saint-Pierre - Réunion</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="about.html" class="nav-link">À propos</a>
+                    <a href="promotions.html" class="nav-link">Promotions</a>
+                    <a href="events.html" class="nav-link">Évènements</a>
+                    <a href="directory.html" class="nav-link active">Annuaire</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="btn btn-primary btn-small">Espace membre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content fade-in">
+                <h1>Annuaire des Alumni TC</h1>
+                <p>Retrouvez et connectez-vous avec les anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre. Une communauté de plus de 150 diplômés.</p>
+                <a href="#directory" class="btn btn-primary">
+                    <i class="fas fa-search"></i> Explorer l'annuaire
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FILTRES -->
+    <div class="container">
+        <div class="directory-filters fade-in delay-1" id="directory">
+            <div class="filters-grid">
+                <div class="filter-group">
+                    <label for="promo-filter"><i class="fas fa-graduation-cap"></i> Promotion</label>
+                    <select id="promo-filter" class="filter-select">
+                        <option value="all">Toutes les promotions</option>
+                        <option value="2018-2019">2018-2019</option>
+                        <option value="2019-2020">2019-2020</option>
+                        <option value="2020-2021">2020-2021</option>
+                        <option value="2021-2022">2021-2022</option>
+                        <option value="2023-2024">2023-2024</option>
+                        <option value="2024-2025">2024-2025</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="group-filter"><i class="fas fa-users"></i> Groupe</label>
+                    <select id="group-filter" class="filter-select">
+                        <option value="all">Tous les groupes</option>
+                        <option value="TC1">TC1</option>
+                        <option value="TC2">TC2</option>
+                        <option value="TC3">TC3</option>
+                        <option value="none">Sans groupe</option>
+                    </select>
+                </div>
+                
+                <div class="filter-group">
+                    <label for="search-input"><i class="fas fa-search"></i> Recherche</label>
+                    <div class="search-container">
+                        <input type="text" id="search-input" class="filter-input" placeholder="Nom, prénom, email...">
+                        <i class="fas fa-search search-icon"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="promo-tabs" id="promo-tabs">
+                <!-- Les onglets seront générés par JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ALUMNI GRID -->
+    <section class="alumni-section">
+        <div class="container">
+            <div class="alumni-stats fade-in delay-2">
+                <div class="stats-info">
+                    <div class="stat-badge" id="total-count">Chargement...</div>
+                    <div class="stat-badge" id="filtered-count"></div>
+                </div>
+                
+                <div class="view-toggle">
+                    <button class="view-btn active" id="grid-view" title="Vue grille">
+                        <i class="fas fa-th-large"></i>
+                    </button>
+                    <button class="view-btn" id="list-view" title="Vue liste">
+                        <i class="fas fa-list"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="alumni-grid" id="alumni-grid">
+                <!-- Les cartes des alumni seront générées par JavaScript -->
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <!-- La pagination sera générée par JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-lut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="footer-logo">
+                    <div class="footer-about">
+                        <p>Réseau Alumni du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre, La Réunion. Une plateforme dédiée à la connexion, l'échange et l'entraide entre anciens étudiants.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="promotions.html"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+                        <li><a href="directory.html"><i class="fas fa-chevron-right"></i> Annuaire</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="mentorship.html"><i class="fas fa-chevron-right"></i> Programme de mentorat</a></li>
+                        <li><a href="jobs.html"><i class="fas fa-chevron-right"></i> Offres d'emploi</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Calendrier des événements</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Ressources professionnelles</a></li>
+                        <li><a href="partners.html"><i class="fas fa-chevron-right"></i> Partenariats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>IUT de Saint-Pierre</strong><br>
+                                Campus universitaire<br>
+                                97410 Saint-Pierre, La Réunion
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+262 262 96 90 00</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>alumni.tc@iut-reunion.fr</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Réseau Alumni TC - IUT de Saint-Pierre. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Projet académique - BUT Techniques de Commercialisation | <a href="privacy.html" style="color: #94a3b8; text-decoration: underline;">Politique de confidentialité</a> | <a href="terms.html" style="color: #94a3b8; text-decoration: underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== DONNÉES DES ALUMNI (EXTRAITES DU FICHIER EXCEL) =====
+        const alumniData = {
+            "2018-2019": [
+                {numero: "1", nom: "MICHEL", prenom: "Anais", email: "anaismichel48@gmail.com", groupe: ""},
+                {numero: "2", nom: "BOYER", prenom: "Madlyne", email: "madlyne.boyer@gmail.com", groupe: ""},
+                {numero: "3", nom: "AALUSSE", prenom: "Neila", email: "neila.aalusse@gmail.com", groupe: ""},
+                {numero: "4", nom: "EDWIGE", prenom: "Nathanaelle", email: "nathanaelle.edwige@gmail.com", groupe: ""},
+                {numero: "5", nom: "LAYEMARD", prenom: "Aline", email: "aline.layemard@orange.fr", groupe: ""},
+                {numero: "6", nom: "LAURET", prenom: "Dorian", email: "dorian.lauret974@gmail.com", groupe: ""},
+                {numero: "7", nom: "MUSSARD", prenom: "Dylan", email: "dylanreal974@gmail.com", groupe: ""},
+                {numero: "8", nom: "LEOCADIE", prenom: "Julie", email: "julieleocadie.27@gmail.com", groupe: ""},
+                {numero: "9", nom: "LEBON", prenom: "Oceane", email: "oceanelebon2000@gmail.com", groupe: ""},
+                {numero: "10", nom: "BARBE", prenom: "Arnaud", email: "barbe-arnaud@hotmail.fr", groupe: ""},
+                {numero: "11", nom: "TOLAR", prenom: "Nicolas", email: "nicolas.tolar974@gmail.com", groupe: ""},
+                {numero: "12", nom: "RANDRIANARISOA", prenom: "Joel", email: "lilozperno@gmail.com", groupe: ""},
+                {numero: "13", nom: "GOWA", prenom: "Baptiste", email: "baptiste.gowa@gmail.com", groupe: ""},
+                {numero: "14", nom: "VERBARD", prenom: "Julie", email: "julieverbard@gmail.com", groupe: ""},
+                {numero: "15", nom: "RAZEBASSIA", prenom: "Emilie", email: "emilie.razebassia@gmail.com", groupe: ""},
+                {numero: "16", nom: "LOMONGIELLO", prenom: "Vanessa", email: "vanessa.lomongiello@hotmail.fr", groupe: ""},
+                {numero: "17", nom: "MOUNICHY", prenom: "Samy", email: "samy.mounichy@gmail.com", groupe: ""},
+                {numero: "18", nom: "PONIN", prenom: "Anthony", email: "thony.ponin974@gmail.com", groupe: ""},
+                {numero: "19", nom: "K BIDI", prenom: "David", email: "davidkbidi1@hotmail.com", groupe: ""},
+                {numero: "20", nom: "VIDOT", prenom: "Loane", email: "loane.vidot@gmail.com", groupe: ""},
+                {numero: "21", nom: "ENCATASSAMY", prenom: "Jimmy", email: "Yann.Gaze01@gmail.com", groupe: ""},
+                {numero: "22", nom: "DORESSAMY AMANY", prenom: "Vincent", email: "mistervince.live.fr@gmail.com", groupe: ""},
+                {numero: "23", nom: "CADET", prenom: "Marc", email: "marc.cadet974@gmail.com", groupe: ""},
+                {numero: "24", nom: "GUIDONI", prenom: "Baptiste", email: "boub04@gmail.com", groupe: ""},
+                {numero: "25", nom: "MOHAMED ALI", prenom: "Moina", email: "moina.mohamedali@outlook.fr", groupe: ""}
+            ],
+            "2019-2020": [
+                {numero: "1", nom: "BEGUE", prenom: "Taciana", email: "nanadu974.tb@gmail.com", groupe: ""},
+                {numero: "2", nom: "BERTIL", prenom: "Marie Carmen", email: "caramel.bertil28@gmail.com", groupe: ""},
+                {numero: "3", nom: "CAMALON", prenom: "Judes", email: "judes.camalon2009@gmail.com", groupe: ""},
+                {numero: "4", nom: "CAMBOUR", prenom: "Antoine", email: "antoine.cambour@gmail.com", groupe: ""},
+                {numero: "5", nom: "CHOURRY", prenom: "Ethan", email: "echourry@gmail.com", groupe: ""},
+                {numero: "6", nom: "COUPAMA", prenom: "Marie", email: "coraline06.coupama@gmail.com", groupe: ""},
+                {numero: "7", nom: "GOKALSING", prenom: "Melodie", email: "gokalsing@gmail.com", groupe: ""},
+                {numero: "8", nom: "GRONDIN", prenom: "Lucas", email: "lucas97440.grondin@gmail.com", groupe: ""},
+                {numero: "9", nom: "HENRI", prenom: "Fenoarison", email: "nicolas-henri@hotmail.fr", groupe: ""},
+                {numero: "10", nom: "IBRAHIM MAMADE", prenom: "Sabriya", email: "sabriya.nazim@gmail.com", groupe: ""},
+                {numero: "11", nom: "LAGARRIGUE", prenom: "Luciana", email: "luciana97450@gmail.com", groupe: ""},
+                {numero: "12", nom: "LALLEMAND", prenom: "Valentin", email: "valentin.lallemand09@outlook.fr", groupe: ""},
+                {numero: "13", nom: "LAMBERT", prenom: "Louna", email: "lounaprisca2001@gmail.com", groupe: ""},
+                {numero: "14", nom: "LEBON", prenom: "Mickaëla", email: "mickaela.lebon@gmail.com", groupe: ""},
+                {numero: "15", nom: "LIBELLE", prenom: "Chloé", email: "c.libelle974@gmail.com", groupe: ""},
+                {numero: "16", nom: "MAHAMOUDOU", prenom: "Sadjidah", email: "sadjidahm@gmail.com", groupe: ""},
+                {numero: "17", nom: "MANSARD", prenom: "Kanel", email: "mansard.kanel974@gmail.com", groupe: ""},
+                {numero: "18", nom: "OLIVATE", prenom: "Théo", email: "theo.olivate@gmail.com", groupe: ""},
+                {numero: "19", nom: "RASOLOHANITRINIAINA", prenom: "Mendrika", email: "mendrikaemmanuella17@gmail.com", groupe: ""},
+                {numero: "20", nom: "REFESSE", prenom: "Joey", email: "joey.refesse@gmail.com", groupe: ""},
+                {numero: "21", nom: "SERVANTES", prenom: "Orlane", email: "orlane.servantes@gmail.com", groupe: ""},
+                {numero: "22", nom: "SERVEAUX", prenom: "Eloïse", email: "cerveauxeloise@gmail.com", groupe: ""},
+                {numero: "23", nom: "SOH", prenom: "Anne-Keren", email: "kenisoh@gmail.com", groupe: ""},
+                {numero: "24", nom: "SOTRON", prenom: "Emma", email: "emma.sotron240@gmail.com", groupe: ""},
+                {numero: "25", nom: "SOUPAYA-VIRAMA", prenom: "Bénédicte", email: "benedicte.soupaya@gmail.com", groupe: ""},
+                {numero: "26", nom: "VAN DE LOO", prenom: "Vincent", email: "vincentvandeloo@gmail.com", groupe: ""},
+                {numero: "27", nom: "XAVIER", prenom: "Willy", email: "xavierwilly9@gmail.com", groupe: ""}
+            ],
+            "2020-2021": [
+                {numero: "1", nom: "LUCAS", prenom: "Amily", email: "amilylucas@gmail.com", groupe: "TC1"},
+                {numero: "2", nom: "BIGOT", prenom: "Elodie", email: "elodiebigot4@gmail.com", groupe: "TC1"},
+                {numero: "3", nom: "BIJOUX", prenom: "Noémie", email: "nbijoux974@gmail.com", groupe: "TC1"},
+                {numero: "4", nom: "BOUHAOUI", prenom: "Ilhame", email: "ihlame.bouhaoui@gmail.com", groupe: "TC1"},
+                {numero: "5", nom: "DJABINI", prenom: "Izaki", email: "djabinizak@gmail.com", groupe: "TC1"},
+                {numero: "6", nom: "ETHEVE", prenom: "Benoît", email: "benoit.etheve1@gmail.com", groupe: "TC1"},
+                {numero: "7", nom: "FERRE", prenom: "Alexis", email: "alexis97456@gmail.com", groupe: "TC1"},
+                {numero: "8", nom: "FIRMIN", prenom: "Karell", email: "karellfirmin@gmail.com", groupe: "TC1"},
+                {numero: "9", nom: "HOARAU", prenom: "Esteban", email: "hoarauesteban@yahoo.com", groupe: "TC1"},
+                {numero: "10", nom: "LAURET", prenom: "Logan", email: "logan.lauret@gmail.com", groupe: "TC1"},
+                {numero: "11", nom: "LAURET", prenom: "Robin", email: "lauretrbn@gmail.com", groupe: "TC1"},
+                {numero: "12", nom: "LUCKMANDJI", prenom: "Idriss", email: "idrissluckmandji@gmail.com", groupe: "TC1"},
+                {numero: "13", nom: "MANAPANY", prenom: "Wendy", email: "wendy.manapany974@gmail.com", groupe: "TC1"},
+                {numero: "14", nom: "MAXIVEL", prenom: "Brice", email: "brice.maxivel.97436@gmail.com", groupe: "TC1"},
+                {numero: "15", nom: "MELABACCUS", prenom: "Sydney", email: "sydney.mlbc@gmail.com", groupe: "TC1"},
+                {numero: "16", nom: "MERCHER", prenom: "Lyrick", email: "lyrick-mercher2002@icloud.com", groupe: "TC1"},
+                {numero: "17", nom: "PARVEDY", prenom: "Naomie", email: "naomie.parvedy7@gmail.com", groupe: "TC1"},
+                {numero: "18", nom: "PAYET", prenom: "Benjamin", email: "payetbenjamin117@gmail.com", groupe: "TC1"},
+                {numero: "19", nom: "RAMAYE", prenom: "Sarah", email: "sarah.rme@gmail.com", groupe: "TC1"},
+                {numero: "20", nom: "RIVIÈRE", prenom: "Mélissa", email: "riviere.melissaa@gmail.com", groupe: "TC1"},
+                {numero: "21", nom: "RIVIÈRE", prenom: "Raphaël", email: "raphaelllriviereee@gmail.com", groupe: "TC1"},
+                {numero: "22", nom: "ROBERT", prenom: "Anthony", email: "anthony.ar.robert@gmail.com", groupe: "TC1"},
+                {numero: "23", nom: "SAUTRON", prenom: "Raphaël", email: "srapha974@gmail.com", groupe: "TC1"},
+                {numero: "24", nom: "SINCÈRE", prenom: "Kenny", email: "kennysincere.9@gmail.com", groupe: "TC1"},
+                {numero: "25", nom: "YEROKINE", prenom: "Ludovic", email: "l.yerokine@gmail.com", groupe: "TC1"},
+                {numero: "26", nom: "BEGUE", prenom: "Taciana", email: "begue.taciana@gmail.com", groupe: "TC2"},
+                {numero: "27", nom: "BERTIL", prenom: "Carmen", email: "carmenbertil01@gmail.com", groupe: "TC2"},
+                {numero: "28", nom: "CAMBOUR", prenom: "Antoine", email: "antoine.cambour@gmail.com", groupe: "TC2"},
+                {numero: "29", nom: "CHOURRY", prenom: "Ethan", email: "echourry@gmail.com", groupe: "TC2"},
+                {numero: "30", nom: "COUPAMA", prenom: "Coraline", email: "coraline06.coupama@gmail.com", groupe: "TC2"},
+                {numero: "31", nom: "GOKALSING", prenom: "Melodie", email: "gokalsing@gmail.com", groupe: "TC2"},
+                {numero: "32", nom: "GRONDIN", prenom: "Lucas", email: "lucas97440.grondin@gmail.com", groupe: "TC2"},
+                {numero: "33", nom: "HENRI", prenom: "Nicolas", email: "nicolas-henri@hotmail.fr", groupe: "TC2"},
+                {numero: "34", nom: "IBRAHIM MAMADE", prenom: "Sabriya", email: "sabriya.nazim@gmail.com", groupe: "TC2"},
+                {numero: "35", nom: "XAVIER", prenom: "Willy", email: "xavierwilly9@gmail.com", groupe: "TC2"},
+                {numero: "36", nom: "LAGARRIGUE", prenom: "Luciana", email: "luciana97450@gmail.com", groupe: "TC2"},
+                {numero: "37", nom: "LALLEMAND", prenom: "Valentin", email: "valentin.lallemand09@outlook.fr", groupe: "TC2"},
+                {numero: "38", nom: "LAMBERT", prenom: "Louna", email: "lounaprisca2001@gmail.com", groupe: "TC2"},
+                {numero: "39", nom: "LEBON", prenom: "Mickaela", email: "mickaela.lebon@gmail.com", groupe: "TC2"},
+                {numero: "40", nom: "LIBELLE", prenom: "Chloe", email: "c.libelle974@gmail.com", groupe: "TC2"},
+                {numero: "41", nom: "BOYER", prenom: "Cyrielle", email: "bcyrielle7@gmail.com", groupe: "TC2"},
+                {numero: "42", nom: "MAHAMOUDOU", prenom: "Sadjidah", email: "sadjidahm@gmail.com", groupe: "TC2"},
+                {numero: "43", nom: "MANSARD", prenom: "Kanel", email: "mansard.kanel974@gmail.com", groupe: "TC2"},
+                {numero: "44", nom: "OLIVATE", prenom: "Theo", email: "theo.olivate@gmail.com", groupe: "TC2"},
+                {numero: "45", nom: "RASOLOHANITRINIAINA", prenom: "Mendrika", email: "mendrikaemmanuella17@gmail.com", groupe: "TC2"},
+                {numero: "46", nom: "REFESSE", prenom: "Joey", email: "joey.refesse@gmail.com", groupe: "TC2"},
+                {numero: "47", nom: "SERVANTES", prenom: "Orlane", email: "orlane.servantes@gmail.com", groupe: "TC2"},
+                {numero: "48", nom: "SERVEAUX", prenom: "Eloise", email: "cerveauxeloise@gmail.com", groupe: "TC2"},
+                {numero: "49", nom: "VAN DE LOO", prenom: "Vincent", email: "vincentvandeloo@gmail.com", groupe: "TC2"},
+                {numero: "50", nom: "SOTRON", prenom: "Emma", email: "emma.sotron240@gmail.com", groupe: "TC2"},
+                {numero: "51", nom: "SOUPAYA", prenom: "Benedicte", email: "benedicte.soupaya@gmail.com", groupe: "TC2"},
+                {numero: "52", nom: "BONNEAU", prenom: "Mélissa", email: "melissabonneau11@gmail.com", groupe: "TC2"}
+            ],
+            "2021-2022": [
+                {numero: "1", nom: "AGATHE", prenom: "Clara", email: "agatheclara0@gmail.com", groupe: "TC1"},
+                {numero: "2", nom: "AGEORGES", prenom: "Quentin", email: "Quentin14parcoursup@gmail.com", groupe: "TC1"},
+                {numero: "3", nom: "AHAMADI", prenom: "Anrife", email: "anrife18@gmail.com", groupe: "TC1"},
+                {numero: "4", nom: "AHAMADI", prenom: "Enida", email: "ahamadienida123@gmail.com", groupe: "TC1"},
+                {numero: "5", nom: "AHAMED", prenom: "Housseni", email: "ahamedsultej@gmail.com", groupe: "TC1"},
+                {numero: "6", nom: "ANCELLY", prenom: "Ericka", email: "ancelly97435@gmail.com", groupe: "TC1"},
+                {numero: "7", nom: "ASSANI SALIME", prenom: "Rashida", email: "rasshiidaa@gmail.com", groupe: "TC1"},
+                {numero: "8", nom: "BEDIMASY", prenom: "Rochina", email: "rochina.bsy@gmail.com", groupe: "TC1"},
+                {numero: "9", nom: "BREZE", prenom: "Grégory", email: "gregorybreze240@gmail.com", groupe: "TC1"},
+                {numero: "10", nom: "BUPTO", prenom: "Lemya", email: "lemya.bupto974@gmail.com", groupe: "TC1"},
+                {numero: "11", nom: "CASTEL", prenom: "Maddie", email: "castelmaddie@gmail.com", groupe: "TC1"},
+                {numero: "12", nom: "CHANE SOUNE TIME", prenom: "Lucas", email: "lucaschane02@gmail.com", groupe: "TC1"},
+                {numero: "13", nom: "DEZE", prenom: "Maika", email: "maika.deze@gmail.com", groupe: "TC1"},
+                {numero: "14", nom: "DIJOUX", prenom: "Célia", email: "dijouxcelia@icloud.com", groupe: "TC1"},
+                {numero: "15", nom: "DIJOUX", prenom: "Maelle", email: "maelledijoux4@gmail.com", groupe: "TC1"},
+                {numero: "16", nom: "DIJOUX", prenom: "Marie-Eloise", email: "dijouxeloise7@gmail.com", groupe: "TC1"},
+                {numero: "17", nom: "DJARDJOUR", prenom: "Kaitlin", email: "djardjourkaitlin652003@gmail.com", groupe: "TC1"},
+                {numero: "18", nom: "FONTAINE", prenom: "Ines", email: "ines.fontaine974@gmail.com", groupe: "TC1"},
+                {numero: "19", nom: "FRAILLON", prenom: "Amélie", email: "amelie.fraillon@gmail.com", groupe: "TC1"},
+                {numero: "20", nom: "GIGAN", prenom: "Mathilde", email: "giganmathilde2@gmail.com", groupe: "TC1"},
+                {numero: "21", nom: "GRONDIN", prenom: "Raissa", email: "grondinraissa972@gmail.com", groupe: "TC1"},
+                {numero: "22", nom: "GRONDIN", prenom: "Yann", email: "yannou97414@gmail.com", groupe: "TC1"},
+                {numero: "23", nom: "GUENNI", prenom: "Enzo", email: "enzo.guenni9@gmail.com", groupe: "TC1"},
+                {numero: "24", nom: "HUET", prenom: "David", email: "huetdavid01@gmail.com", groupe: "TC1"},
+                {numero: "25", nom: "HUET", prenom: "Lucas", email: "lucashuet11@gmail.com", groupe: "TC1"},
+                {numero: "26", nom: "INGUEHE", prenom: "Solan", email: "solanlucas.steven@gmail.com", groupe: "TC1"},
+                {numero: "27", nom: "JARNAC", prenom: "Chloe", email: "chloe.jarnac02@gmail.com", groupe: "TC1"},
+                {numero: "28", nom: "JULIEN", prenom: "Sunny", email: "sunny.julien@laposte.net", groupe: "TC1"},
+                {numero: "29", nom: "LUC", prenom: "Kléa", email: "lealuc7@gmail.com", groupe: "TC1"},
+                {numero: "30", nom: "MAGDELEINE", prenom: "Ludovic", email: "magludovic974@gmail.com", groupe: "TC1"},
+                {numero: "31", nom: "MARIMOUTOU", prenom: "Joshuan", email: "xavier9745077@gmail.com", groupe: "TC1"},
+                {numero: "32", nom: "MOHAMADY MAHADALY", prenom: "Hassouany", email: "hassouany.mohamady@gmail.com", groupe: "TC1"},
+                {numero: "33", nom: "MOREL", prenom: "Ahidee", email: "morelahidee0@gmail.com", groupe: "TC1"},
+                {numero: "34", nom: "MOURIDI", prenom: "Samy", email: "samy.mouridi974@gmail.com", groupe: "TC1"},
+                {numero: "35", nom: "MUSSARD", prenom: "Thomas", email: "mussard350@gmail.com", groupe: "TC1"},
+                {numero: "36", nom: "NASSIBOU", prenom: "Jonathan", email: "jonathan.nsb@outlook.fr", groupe: "TC1"},
+                {numero: "37", nom: "OSIRIS", prenom: "Wendy", email: "wendyosiris18@gmail.com", groupe: "TC1"},
+                {numero: "38", nom: "PANCHBAYA", prenom: "Oweis", email: "oweispcb15@gmail.com", groupe: "TC1"},
+                {numero: "39", nom: "PAYET", prenom: "Candice", email: "payeycandice@gmail.com", groupe: "TC1"},
+                {numero: "40", nom: "PAYET", prenom: "Mélissa", email: "melissapayet17@gmail.com", groupe: "TC1"},
+                {numero: "41", nom: "PAYET", prenom: "William", email: "payetw974@gmail.com", groupe: "TC1"},
+                {numero: "42", nom: "PONTIAC", prenom: "Talia", email: "pontiactaliaclarita@gmail.com", groupe: "TC1"},
+                {numero: "43", nom: "RAHARIMALALA", prenom: "Winnie", email: "winniyeuhgigant@gmail.com", groupe: "TC1"},
+                {numero: "44", nom: "RIFOSTA", prenom: "Anne-Marie", email: "annemarierifosta@gmail.com", groupe: "TC1"},
+                {numero: "45", nom: "RUISI", prenom: "Mathis", email: "mathisruisi.pro@gmail.com", groupe: "TC1"},
+                {numero: "46", nom: "SIMINE", prenom: "Jade", email: "jadesmn01@gmail.com", groupe: "TC1"},
+                {numero: "47", nom: "TCHOMCHI MOUGANG", prenom: "Lauren", email: "tchomchil@gmail.com", groupe: "TC1"},
+                {numero: "48", nom: "THOMAS", prenom: "Yaelle", email: "thomas.yaelle.cedrine@gmail.com", groupe: "TC1"},
+                {numero: "49", nom: "VITRY", prenom: "Amélie", email: "amelie97480@icloud.com", groupe: "TC1"},
+                {numero: "50", nom: "YOUSSOUF", prenom: "Hassuda", email: "hassudayoussouf.pro@gmail.com", groupe: "TC1"},
+                {numero: "51", nom: "AMILY", prenom: "Lucas", email: "amilylucas@gmail.com", groupe: "TC2"},
+                {numero: "52", nom: "BIGOT", prenom: "Elodie", email: "elodiebigot4@gmail.com", groupe: "TC2"},
+                {numero: "53", nom: "BIJOUX", prenom: "Noemie", email: "nbijoux974@gmail.com", groupe: "TC2"},
+                {numero: "54", nom: "BOUHAOUI", prenom: "Ihlame", email: "Ihlame.bouhaoui@gmail.com", groupe: "TC2"},
+                {numero: "55", nom: "DJABIRI", prenom: "Izaki", email: "djabiriizak@gmail.com", groupe: "TC2"},
+                {numero: "56", nom: "ETHEVE", prenom: "Benoit", email: "benoit.etheve1@gmail.com", groupe: "TC2"},
+                {numero: "57", nom: "FERRE", prenom: "Alexis", email: "alexis97456@gmail.com", groupe: "TC2"},
+                {numero: "58", nom: "FIRMIN", prenom: "Karell", email: "karellfirmin@gmail.com", groupe: "TC2"},
+                {numero: "59", nom: "HOARAU", prenom: "Esteban", email: "hoarauesteban@yahoo.com", groupe: "TC2"},
+                {numero: "60", nom: "JEANNINE", prenom: "Lenny", email: "lennyjeannine1@gmail.com", groupe: "TC2"},
+                {numero: "61", nom: "LAURET", prenom: "Robin", email: "lauretrbn@gmail.com", groupe: "TC2"},
+                {numero: "62", nom: "LUCKMANDJI", prenom: "Idriss", email: "idrissluckmandji@gmail.com", groupe: "TC2"},
+                {numero: "63", nom: "MANAPANY", prenom: "Wendy", email: "manapany.wendy@gmail.com", groupe: "TC2"},
+                {numero: "64", nom: "MAXIVEL", prenom: "Brice", email: "brice.maxivel.97436@gmail.com", groupe: "TC2"},
+                {numero: "65", nom: "MERCHER", prenom: "Lyrick", email: "lyrick_mercher2002@icloud.com", groupe: "TC2"},
+                {numero: "66", nom: "MOLABACCUS", prenom: "Sydney", email: "sydney.mlbc@gmail.com", groupe: "TC2"},
+                {numero: "67", nom: "PARVEDY", prenom: "Naomie", email: "naomie.parvedy7@gmail.com", groupe: "TC2"},
+                {numero: "68", nom: "PAYET", prenom: "Benjamin", email: "payetbenjamin117@gmail.com", groupe: "TC2"},
+                {numero: "69", nom: "PAYET", prenom: "Ranisha", email: "ranisha.payet@outlook.com", groupe: "TC2"},
+                {numero: "70", nom: "RAMAYE", prenom: "Sarah", email: "sarah.rme@gmail.com", groupe: "TC2"},
+                {numero: "71", nom: "RIVIERE", prenom: "Raphael", email: "raphaelllriviereee@gmail.com", groupe: "TC2"},
+                {numero: "72", nom: "ROBERT", prenom: "Anthony", email: "anthony.ar.robert@gmail.com", groupe: "TC2"},
+                {numero: "73", nom: "SAUTRON", prenom: "Raphael", email: "srapha974@gmail.com", groupe: "TC2"},
+                {numero: "74", nom: "SINCERE", prenom: "Kenny", email: "kennysincere.9@gmail.com", groupe: "TC2"},
+                {numero: "75", nom: "YEROKINE", prenom: "Ludovic", email: "l.yerokine@gmail.com", groupe: "TC2"}
+            ],
+            "2023-2024": [
+                {numero: "1", nom: "ABDALLAH", prenom: "Saandia", email: "saandia737@gmail.com", groupe: "TC1"},
+                {numero: "2", nom: "AEBY", prenom: "Raphael", email: "aeby.marc@neuf.fr", groupe: "TC1"},
+                {numero: "3", nom: "ALCINOUS", prenom: "Meryno", email: "merynoalcns@icloud.com", groupe: "TC1"},
+                {numero: "4", nom: "ALI", prenom: "Kamardine", email: "akamardine88@gmail.com", groupe: "TC1"},
+                {numero: "5", nom: "ATTOUMANE", prenom: "Mistoihi", email: "Attoumanemistoihi7@outlook.com", groupe: "TC1"},
+                {numero: "6", nom: "AUGUSTINE", prenom: "Emmie", email: "emmieaugustine@gmail.com", groupe: "TC1"},
+                {numero: "7", nom: "BARRAT", prenom: "Enzo", email: "benaurely@live.fr", groupe: "TC1"},
+                {numero: "8", nom: "BASSAN", prenom: "Maelle", email: "bassanmaelle@gmail.com", groupe: "TC1"},
+                {numero: "9", nom: "BOUDONNET", prenom: "Nathan", email: "nathanmichel623@gmail.com", groupe: "TC1"},
+                {numero: "10", nom: "CERVEAUX - DUBERVILLE", prenom: "Joey", email: "cerveauxjoey@yahoo.com", groupe: "TC1"},
+                {numero: "11", nom: "CHOURRY", prenom: "Micha", email: "michachourry39@gmail.com", groupe: "TC1"},
+                {numero: "12", nom: "CORDIER", prenom: "Kevin", email: "cordierkevin14@gmail.com", groupe: "TC1"},
+                {numero: "13", nom: "DAOUD", prenom: "Mouna", email: "daoudmouna976@gmail.com", groupe: "TC1"},
+                {numero: "14", nom: "DOYARD", prenom: "Louis", email: "louisdoy.974@gmail.com", groupe: "TC1"},
+                {numero: "15", nom: "FELICITE", prenom: "Noha", email: "nohafelicite@gmail.com", groupe: "TC1"},
+                {numero: "16", nom: "FERRIER", prenom: "Jordan", email: "ferrierjordan31@gmail.com", groupe: "TC1"},
+                {numero: "17", nom: "GEVIA", prenom: "Camille", email: "camillegevia28@gmail.com", groupe: "TC1"},
+                {numero: "18", nom: "GOMMARD", prenom: "Flavien", email: "flaviengom@gmail.com", groupe: "TC1"},
+                {numero: "19", nom: "GRONDIN", prenom: "Juliette", email: "julia97405@gmail.com", groupe: "TC1"},
+                {numero: "20", nom: "GRONDIN", prenom: "Kelyan", email: "grondinkelyan08@gmail.com", groupe: "TC1"},
+                {numero: "21", nom: "GUICHARD", prenom: "Inès", email: "inesguichard974@gmail.com", groupe: "TC1"},
+                {numero: "22", nom: "HOARAU", prenom: "Madisson", email: "hoaraumadisson@gmail.com", groupe: "TC1"},
+                {numero: "23", nom: "HOAREAU", prenom: "Elia", email: "hoareau.elia@orange.fr", groupe: "TC1"},
+                {numero: "24", nom: "HOAREAU", prenom: "Julie", email: "julie.1103@icloud.com", groupe: "TC1"},
+                {numero: "25", nom: "HOAREAU", prenom: "Noah", email: "hoareaunoah69@gmail.com", groupe: "TC1"},
+                {numero: "26", nom: "HOBAYA", prenom: "Djouweiriya", email: "hobayadjouweiriya63@gmail.com", groupe: "TC1"},
+                {numero: "27", nom: "HUBERT", prenom: "Chloé", email: "chloe.hubert90@gmail.com", groupe: "TC1"},
+                {numero: "28", nom: "HUET", prenom: "Jean", email: "roland.huet.ce@gmail.com", groupe: "TC1"},
+                {numero: "29", nom: "IBRAHIM", prenom: "Mathis", email: "mathisibrahim974@gmail.com", groupe: "TC1"},
+                {numero: "30", nom: "ISSE-ALY", prenom: "Shayan", email: "isseshayan@gmail.com", groupe: "TC1"},
+                {numero: "31", nom: "JOSIA", prenom: "Maureen", email: "josiamaureen3@gmail.com", groupe: "TC1"},
+                {numero: "32", nom: "JUVENAL", prenom: "Estelle", email: "estelle4269797@gmail.com", groupe: "TC1"},
+                {numero: "33", nom: "LOGORAS", prenom: "Victoria", email: "Claralogoras@gmail.com", groupe: "TC1"},
+                {numero: "34", nom: "MADA", prenom: "Angelina", email: "angelina01mada@gmail.com", groupe: "TC1"},
+                {numero: "35", nom: "MARIMOUTOU", prenom: "Mathis", email: "mathis97450777@gmail.com", groupe: "TC1"},
+                {numero: "36", nom: "M'DALLAH MARI", prenom: "Tavavy", email: "t.vavy16@gmail.com", groupe: "TC1"},
+                {numero: "37", nom: "MEHL", prenom: "Enzo", email: "enzongoclong@gmail.com", groupe: "TC1"},
+                {numero: "38", nom: "MOUSSA", prenom: "Oumar", email: "oumarmoussa80@gmail.com", groupe: "TC1"},
+                {numero: "39", nom: "NOEL--VAN DOREN", prenom: "Claralou", email: "claralou.nvd@gmail.com", groupe: "TC1"},
+                {numero: "40", nom: "PALAMA", prenom: "Nilammeil", email: "nilammeilpalama@gmail.com", groupe: "TC1"},
+                {numero: "41", nom: "PATEL", prenom: "Kenza", email: "kenza.patel@icloud.com", groupe: "TC1"},
+                {numero: "42", nom: "POTOLA", prenom: "Aurélien", email: "aurelien.ptl974@gmail.com", groupe: "TC1"},
+                {numero: "43", nom: "ROBERT", prenom: "Fanelie", email: "fanelierobert05@gmail.com", groupe: "TC1"},
+                {numero: "44", nom: "ROCHEFEUILLE", prenom: "Louis", email: "louisrochefeuille26@gmail.com", groupe: "TC1"},
+                {numero: "45", nom: "ROUVEAU", prenom: "Gabrielle", email: "grouveau1@gmail.com", groupe: "TC1"},
+                {numero: "46", nom: "SINCERE", prenom: "Matthias", email: "matthiassincere77@gmail.com", groupe: "TC1"},
+                {numero: "47", nom: "TECHER", prenom: "Dorian", email: "dorian22tch07@gmail.com", groupe: "TC1"},
+                {numero: "48", nom: "TOUTAIN", prenom: "Thomas", email: "toutain.thomas14@gmail.com", groupe: "TC1"},
+                {numero: "49", nom: "VIDOT", prenom: "Malia", email: "vmaliasania@gmail.com", groupe: "TC1"},
+                {numero: "50", nom: "VIRASSAMY SACRI", prenom: "Laura", email: "lvirassamysacri10@gmail.com", groupe: "TC1"},
+                {numero: "51", nom: "AMADA", prenom: "Ishaka", email: "ishakaamada@gmail.com", groupe: "TC2"},
+                {numero: "52", nom: "ARZAC", prenom: "Maxime", email: "maxarza974@gmail.com", groupe: "TC2"},
+                {numero: "53", nom: "AUBIN", prenom: "Lucas", email: "lucasabn07@gmail.com", groupe: "TC2"},
+                {numero: "54", nom: "BANOR", prenom: "Maeva", email: "maeva.banor9@gmail.com", groupe: "TC2"},
+                {numero: "55", nom: "BATONNET", prenom: "Marine", email: "batonnetmarine@gmail.com", groupe: "TC2"},
+                {numero: "56", nom: "BRUNIQUET", prenom: "Marissa", email: "marissa.bruniquet@gmail.com", groupe: "TC2"},
+                {numero: "57", nom: "CAMBOUR", prenom: "Léa", email: "lea.cambour@gmail.com", groupe: "TC2"},
+                {numero: "58", nom: "CARVALHO", prenom: "Léo", email: "Andradeleo97410@gmail.com", groupe: "TC2"},
+                {numero: "59", nom: "CHAUFFARD", prenom: "Corentin", email: "chauffardcorentin@gmail.com", groupe: "TC2"},
+                {numero: "60", nom: "COLAS", prenom: "Paul", email: "colaspaul974@gmail.com", groupe: "TC2"},
+                {numero: "61", nom: "DEGUFFROY", prenom: "Jérémy", email: "mangaka.jeremy@gmail.com", groupe: "TC2"},
+                {numero: "62", nom: "DELPON", prenom: "Samuel", email: "delpon.samuel@gmail.com", groupe: "TC2"},
+                {numero: "63", nom: "DUBARD", prenom: "Lucile", email: "lucile.dubard04@gmail.com", groupe: "TC2"},
+                {numero: "64", nom: "FURCY", prenom: "Marine", email: "marine.furcy37@gmail.com", groupe: "TC2"},
+                {numero: "65", nom: "GERMAIN", prenom: "Amira", email: "germainamira@gmail.com", groupe: "TC2"},
+                {numero: "66", nom: "GRONDIN", prenom: "Cheryl", email: "cheryl.gr974@gmail.com", groupe: "TC2"},
+                {numero: "67", nom: "HOARAU", prenom: "Stacy", email: "stacyhoarau974@gmail.com", groupe: "TC2"},
+                {numero: "68", nom: "IGOUFE", prenom: "Noémie", email: "noemieigoufe@gmail.com", groupe: "TC2"},
+                {numero: "69", nom: "JOANY", prenom: "Sandy", email: "joanysandypro@gmail.com", groupe: "TC2"},
+                {numero: "70", nom: "KLOTZ", prenom: "Titouan", email: "klo.titouan@gmail.com", groupe: "TC2"},
+                {numero: "71", nom: "LALEVEE", prenom: "Duncan", email: "duncann.lalevee@gmail.com", groupe: "TC2"},
+                {numero: "72", nom: "LAMARQUE", prenom: "Lucas", email: "lucaslamarque.pro@gmail.com", groupe: "TC2"},
+                {numero: "73", nom: "LAURET", prenom: "Thomas", email: "thomaslauret524@gmail.com", groupe: "TC2"},
+                {numero: "74", nom: "LAW-THIME", prenom: "Angélique", email: "angelique.lawthime@gmail.com", groupe: "TC2"},
+                {numero: "75", nom: "LEBON", prenom: "Isabelle", email: "isabellelebon14@gmail.com", groupe: "TC2"},
+                {numero: "76", nom: "LELONG", prenom: "Laurie", email: "laurie.lelong.eva@gmail.com", groupe: "TC2"},
+                {numero: "77", nom: "LOUISE", prenom: "Emma", email: "l.emma20@protonmail.com", groupe: "TC2"},
+                {numero: "78", nom: "MINATCHY", prenom: "Daina", email: "dainaminatchye@gmail.com", groupe: "TC2"},
+                {numero: "79", nom: "MOHAMED THABITI", prenom: "Yousra", email: "yousra.m24@outlook.fr", groupe: "TC2"},
+                {numero: "80", nom: "MOUSSA", prenom: "Yamine", email: "jeanbobmoussa@gmail.com", groupe: "TC2"},
+                {numero: "81", nom: "MOYANO", prenom: "Rachel", email: "rach.moya13@gmail.com", groupe: "TC2"},
+                {numero: "82", nom: "NACAOUELLE", prenom: "Clémence", email: "clemencenacaouelle2@gmail.com", groupe: "TC2"},
+                {numero: "83", nom: "NICOLLE", prenom: "Romy", email: "n.romy@icloud.com", groupe: "TC2"},
+                {numero: "84", nom: "NOEL", prenom: "Liv", email: "noeliv974@icloud.com", groupe: "TC2"},
+                {numero: "85", nom: "PAYET", prenom: "Inès", email: "inespayet25@gmail.com", groupe: "TC2"},
+                {numero: "86", nom: "PLUMASSEAU", prenom: "Esslyne", email: "esslyne.plumasseau@gmail.com", groupe: "TC2"},
+                {numero: "87", nom: "RAMANANARIVO", prenom: "Tina", email: "tina.srmv@gmail.com", groupe: "TC2"},
+                {numero: "88", nom: "RAMAYE", prenom: "Anne-Laure", email: "annelaureramaye04@gmail.com", groupe: "TC2"},
+                {numero: "89", nom: "RIVIERE", prenom: "Estelle", email: "estelleriviere12@gmail.com", groupe: "TC2"},
+                {numero: "90", nom: "ROUBY", prenom: "Maiwenn", email: "roubymaiwenn@gmail.com", groupe: "TC2"},
+                {numero: "91", nom: "RUISI", prenom: "Mathis", email: "mathisruisi.pro@gmail.com", groupe: "TC2"},
+                {numero: "92", nom: "SAID ABDALLAH", prenom: "Nourdine", email: "nourdinesaidabdallah83@gmail.com", groupe: "TC2"},
+                {numero: "93", nom: "SERY", prenom: "Samuel", email: "samuelosery@gmail.com", groupe: "TC2"},
+                {numero: "94", nom: "TAOCHY", prenom: "Lauréline", email: "laurelinetaochy@gmail.com", groupe: "TC2"},
+                {numero: "95", nom: "VIENNE", prenom: "David", email: "jeandavidvienne29@gmail.com", groupe: "TC2"},
+                {numero: "96", nom: "AHAMADI", prenom: "Anrife", email: "anrife18@gmail.com", groupe: "TC3"},
+                {numero: "97", nom: "ANCELLY", prenom: "Ericka", email: "ancelly.ericka1@gmail.com", groupe: "TC3"},
+                {numero: "98", nom: "BEDIMASY", prenom: "Rochina", email: "rochina.bsy@gmail.com", groupe: "TC3"},
+                {numero: "99", nom: "BREZE", prenom: "Grégory", email: "gregorybreze240@gmail.com", groupe: "TC3"},
+                {numero: "100", nom: "GRONDIN", prenom: "Raissa", email: "grondinraissa972@gmail.com", groupe: "TC3"},
+                {numero: "101", nom: "GUENNI", prenom: "Enzo", email: "enzo.guenni9@gmail.com", groupe: "TC3"},
+                {numero: "102", nom: "MAGDELEINE", prenom: "Ludovic", email: "magludovic974@gmail.com", groupe: "TC3"},
+                {numero: "103", nom: "MARIMOUTOU", prenom: "Joshuan", email: "Joshuan.marimoutou@gmail.com", groupe: "TC3"},
+                {numero: "104", nom: "MOURIDI", prenom: "Samy", email: "samy.mouridi974@gmail.com", groupe: "TC3"},
+                {numero: "105", nom: "NASSIBOU", prenom: "Jonathan", email: "jonathan.nassibou@yahoo.com", groupe: "TC3"},
+                {numero: "106", nom: "OSIRIS", prenom: "Wendy", email: "wendyosiris18@gmail.com", groupe: "TC3"},
+                {numero: "107", nom: "PAYET", prenom: "Candice", email: "payeycandice@gmail.com", groupe: "TC3"},
+                {numero: "108", nom: "RAHARIMALALA", prenom: "Winnie", email: "winniyeuhgigant@gmail.com", groupe: "TC3"},
+                {numero: "109", nom: "RIFOSTA", prenom: "Anne-Marie", email: "annemarierifosta@gmail.com", groupe: "TC3"},
+                {numero: "110", nom: "FONTAINE", prenom: "Inès", email: "ines.fontaine974@gmail.com", groupe: "TC3"},
+                {numero: "111", nom: "AHAMED", prenom: "Housseni", email: "ahamedsultej@gmail.com", groupe: "TC3"},
+                {numero: "112", nom: "GRONDIN", prenom: "Yann", email: "yannou97414@gmail.com", groupe: "TC3"}
+            ],
+            "2024-2025": [
+                {numero: "1", nom: "AMBROISE", prenom: "Yannis", email: "lendormie7@gmail.com", groupe: ""},
+                {numero: "2", nom: "ANTIMENE", prenom: "Axelle", email: "antimeneaxelle@gmail.com", groupe: ""},
+                {numero: "3", nom: "AURE GASTRIN-THEMEZE", prenom: "Manon", email: "gastrinmanon@gmail.com", groupe: ""},
+                {numero: "4", nom: "BEDACHE", prenom: "Danyla", email: "bedache02@gmail.com", groupe: ""},
+                {numero: "5", nom: "BEN SAÏD", prenom: "Elsa", email: "bensaidelsa1@gmail.com", groupe: ""},                {numero: "6", nom: "BERAUD", prenom: "Eulalie", email: "beraud-eulalie@yahoo.com", groupe: ""},
+                {numero: "7", nom: "BIGOT", prenom: "Marie", email: "elisabethbigot390@gmail.com", groupe: ""},
+                {numero: "8", nom: "BOLOGNA", prenom: "Noéli", email: "noeli974lol@gmail.com", groupe: ""},
+                {numero: "9", nom: "BOUTTIER", prenom: "Tristan", email: "t.bouttier99@gmail.com", groupe: ""},
+                {numero: "10", nom: "CAMATCHY", prenom: "Lilly", email: "lunacamatchy@gmail.com", groupe: ""},
+                {numero: "11", nom: "CAPITAN", prenom: "Sixtine", email: "sixtinecapitan@gmail.com", groupe: ""},
+                {numero: "12", nom: "CLAIN", prenom: "Cléa", email: "clea.clain00@gmail.com", groupe: ""},
+                {numero: "13", nom: "COURCELLE", prenom: "Flore-Aline", email: "florealine.courcelle@gmail.com", groupe: ""},
+                {numero: "14", nom: "DALLEAU", prenom: "Marie Anne", email: "adalleau29@gmail.com", groupe: ""},
+                {numero: "15", nom: "DAMOUR", prenom: "Jean-Jacques", email: "jeanjacquesdamour02@gmail.com", groupe: ""},
+                {numero: "16", nom: "DAOUD", prenom: "Nouroulayne", email: "nouroulayne@gmail.com", groupe: ""},
+                {numero: "17", nom: "DORVAL", prenom: "Rachel", email: "dorvalrachel26@gmail.com", groupe: ""},
+                {numero: "18", nom: "DOZIO", prenom: "Marlone", email: "marlone.dozio@gmail.com", groupe: ""},
+                {numero: "19", nom: "ESTHER LEPINAY", prenom: "Lisa", email: "lisalaurine974@icloud.com", groupe: ""},
+                {numero: "20", nom: "ETHEVE", prenom: "Khyliann", email: "ethevekhyliann@gmail.com", groupe: ""},
+                {numero: "21", nom: "ETIENNE", prenom: "Gabriel", email: "gabrieletienne7@gmail.com", groupe: ""},
+                {numero: "22", nom: "GRONDIN", prenom: "Amélia", email: "grondinamelia6@icloud.com", groupe: ""},
+                {numero: "23", nom: "GRONDIN", prenom: "Amélie", email: "grondinamelie1@gmail.com", groupe: ""},
+                {numero: "24", nom: "HOAREAU", prenom: "Méline", email: "mc.hoareauu@gmail.com", groupe: ""},
+                {numero: "25", nom: "IDMOND", prenom: "Marie", email: "idmond02@gmail.com", groupe: ""},
+                {numero: "26", nom: "ISSA", prenom: "Rahim", email: "iissa.rahim@gmail.com", groupe: ""},
+                {numero: "27", nom: "LANGEVILLIER", prenom: "Nelly", email: "langevillier.nelly974@gmail.com", groupe: ""},
+                {numero: "28", nom: "LASY", prenom: "Ismaël", email: "ismaellasy1904@gmail.com", groupe: ""},
+                {numero: "29", nom: "LATOUR", prenom: "Florian", email: "latourflorian1@gmail.com", groupe: ""},
+                {numero: "30", nom: "LAURET", prenom: "Mathilde", email: "lauret.mathilde@outlook.fr", groupe: ""},
+                {numero: "31", nom: "LEBON", prenom: "Liam", email: "liam.lebon76@gmail.com", groupe: ""},
+                {numero: "32", nom: "LUDOVIC", prenom: "Lucas", email: "lucasldvc@gmail.com", groupe: ""},
+                {numero: "33", nom: "MADI BACAR", prenom: "Samianthi", email: "samianthimadibacar@gmail.com", groupe: ""},
+                {numero: "34", nom: "MESSANT", prenom: "Julia", email: "messantjulia@gmail.com", groupe: ""},
+                {numero: "35", nom: "MOUDROINE HOUMADI", prenom: "Yaris", email: "yarismoudroine@gmail.com", groupe: ""},
+                {numero: "36", nom: "NOURDINE", prenom: "Irmane", email: "irinourdine@gmail.com", groupe: ""},
+                {numero: "37", nom: "OSIRIS", prenom: "Luka", email: "lukaosiris05@gmail.com", groupe: ""},
+                {numero: "38", nom: "PAYET", prenom: "Gabriel", email: "gabi.pay974@gmail.com", groupe: ""},
+                {numero: "39", nom: "POTHIN", prenom: "Noémie", email: "noemie.pothin11@gmail.com", groupe: ""},
+                {numero: "40", nom: "ROSET", prenom: "Océane", email: "oceane.roset414@gmail.com", groupe: ""},
+                {numero: "41", nom: "SABIR", prenom: "Ynsiya", email: "sabirinsiya46@gmail.com", groupe: ""},
+                {numero: "42", nom: "SADZOUTE IMANGUE", prenom: "Stessie", email: "sadzoute.70@gmail.com", groupe: ""},
+                {numero: "43", nom: "SINNADURAI", prenom: "Lana", email: "lana.sinna@gmail.com", groupe: ""},
+                {numero: "44", nom: "SOUDARD", prenom: "Lucas", email: "soudard.sg@gmail.com", groupe: ""},
+                {numero: "45", nom: "SYLVAIN", prenom: "Heidi", email: "heidisylvain2006@gmail.com", groupe: ""},
+                {numero: "46", nom: "TARABEY--BÈGUE", prenom: "Rafic", email: "rafictarabeybegue@gmail.com", groupe: ""},
+                {numero: "47", nom: "TOUTAIN", prenom: "Thomas", email: "toutain.thomas14@gmail.com", groupe: ""},
+                {numero: "48", nom: "ULDERIC", prenom: "Coralie", email: "coralieulderic@icloud.com", groupe: ""},
+                {numero: "49", nom: "VIRAPIN KEMMA", prenom: "Loane", email: "loanevk03@gmail.com", groupe: ""},
+                {numero: "50", nom: "ABDALLAH", prenom: "Saandia", email: "saandia737@gmail.com", groupe: "TC2"},
+                {numero: "51", nom: "AEBY", prenom: "Raphael", email: "aeby.marc@neuf.fr", groupe: "TC2"},
+                {numero: "52", nom: "ALCINOUS", prenom: "Meryno", email: "merynoalcns@icloud.com", groupe: "TC2"},
+                {numero: "53", nom: "ALI", prenom: "Kamardine", email: "akamardine88@gmail.com", groupe: "TC2"},
+                {numero: "54", nom: "ATTOUMANE", prenom: "Mistoihi", email: "Attoumanemistoihi7@outlook.com", groupe: "TC2"},
+                {numero: "55", nom: "AUGUSTINE", prenom: "Emmie", email: "emmieaugustine@gmail.com", groupe: "TC2"},
+                {numero: "56", nom: "BARRAT", prenom: "Enzo", email: "enzo.brt07@icloud.com", groupe: "TC2"},
+                {numero: "57", nom: "BASSAN", prenom: "Maelle", email: "bassanmaelle@gmail.com", groupe: "TC2"},
+                {numero: "58", nom: "BOUDONNET", prenom: "Nathan", email: "nathanmichel623@gmail.com", groupe: "TC2"},
+                {numero: "59", nom: "CERVEAUX - DUBERVILLE", prenom: "Joey", email: "cerveauxjoey@yahoo.com", groupe: "TC2"},
+                {numero: "60", nom: "CHOURRY", prenom: "Micha", email: "michachourry39@gmail.com", groupe: "TC2"},
+                {numero: "61", nom: "DAOUD", prenom: "Mouna", email: "daoudmouna976@gmail.com", groupe: "TC2"},
+                {numero: "62", nom: "FELICITE", prenom: "Noha", email: "nohafelicite@gmail.com", groupe: "TC2"},
+                {numero: "63", nom: "FERRIER", prenom: "Jordan", email: "ferrierjordan31@gmail.com", groupe: "TC2"},
+                {numero: "64", nom: "GEVIA", prenom: "Camille", email: "camillegevia28@gmail.com", groupe: "TC2"},
+                {numero: "65", nom: "GOMMARD", prenom: "Flavien", email: "flaviengom@gmail.com", groupe: "TC2"},
+                {numero: "66", nom: "GRONDIN", prenom: "Juliette", email: "julia97405@gmail.com", groupe: "TC2"},
+                {numero: "67", nom: "GRONDIN", prenom: "Kelyan", email: "grondinkelyan08@gmail.com", groupe: "TC2"},
+                {numero: "68", nom: "GUICHARD", prenom: "Inès", email: "inesguichard974@gmail.com", groupe: "TC2"},
+                {numero: "69", nom: "GUILLARD", prenom: "Pauline", email: "Paulineguillard.pro@gmail.com", groupe: "TC2"},
+                {numero: "70", nom: "HOARAU", prenom: "Dany", email: "annick.hoarau@hotmail.fr", groupe: "TC2"},
+                {numero: "71", nom: "HOARAU", prenom: "Madisson", email: "hoaraumadisson@gmail.com", groupe: "TC2"},
+                {numero: "72", nom: "HOAREAU", prenom: "Julie", email: "julie.1103@icloud.com", groupe: "TC2"},
+                {numero: "73", nom: "HOAREAU", prenom: "Noah", email: "hoareaunoah69@gmail.com", groupe: "TC2"},
+                {numero: "74", nom: "HOBAYA", prenom: "Djouweiriya", email: "hobayadjouweiriya63@gmail.com", groupe: "TC2"},
+                {numero: "75", nom: "HUBERT", prenom: "Chloé", email: "chloe.hubert90@gmail.com", groupe: "TC2"},
+                {numero: "76", nom: "HUET", prenom: "Jean", email: "roland.huet.ce@gmail.com", groupe: "TC2"},
+                {numero: "77", nom: "IBRAHIM", prenom: "Mathis", email: "mathisibrahim974@gmail.com", groupe: "TC2"},
+                {numero: "78", nom: "ISSE-ALY", prenom: "Shayan", email: "isseshayan@gmail.com", groupe: "TC2"},
+                {numero: "79", nom: "JOSIA", prenom: "Maureen", email: "josiamaureen3@gmail.com", groupe: "TC2"},
+                {numero: "80", nom: "LOGORAS", prenom: "Victoria", email: "Claralogoras@gmail.com", groupe: "TC2"},
+                {numero: "81", nom: "MADA", prenom: "Angelina", email: "angelina01mada@gmail.com", groupe: "TC2"},
+                {numero: "82", nom: "MAOUDJID", prenom: "Assane", email: "maoudjidassane@gmail.com", groupe: "TC2"},
+                {numero: "83", nom: "MARIMOUTOU", prenom: "Mathis", email: "mathis97450777@gmail.com", groupe: "TC2"},
+                {numero: "84", nom: "M'DALLAH MARI", prenom: "Tavavy", email: "t.vavy16@gmail.com", groupe: "TC2"},
+                {numero: "85", nom: "MEHL", prenom: "Enzo", email: "enzongoclong@gmail.com", groupe: "TC2"},
+                {numero: "86", nom: "MOJARD", prenom: "Elsa", email: "elsa.mojard05@gmail.com", groupe: "TC2"},
+                {numero: "87", nom: "MOUSSA", prenom: "Oumar", email: "oumarmoussa80@gmail.com", groupe: "TC2"},
+                {numero: "88", nom: "NOEL--VAN DOREN", prenom: "Claralou", email: "claralou.nvd@gmail.com", groupe: "TC2"},
+                {numero: "89", nom: "PALAMA", prenom: "Nilammeil", email: "nilammeilpalama@gmail.com", groupe: "TC2"},
+                {numero: "90", nom: "PATEL", prenom: "Kenza", email: "kenza.patel@icloud.com", groupe: "TC2"},
+                {numero: "91", nom: "POTOLA", prenom: "Aurélien", email: "aurelien.ptl974@gmail.com", groupe: "TC2"},
+                {numero: "92", nom: "ROBERT", prenom: "Fanelie", email: "fanelierobert05@gmail.com", groupe: "TC2"},
+                {numero: "93", nom: "ROCHEFEUILLE", prenom: "Louis", email: "louisrochefeuille26@gmail.com", groupe: "TC2"},
+                {numero: "94", nom: "ROUVEAU", prenom: "Gabrielle", email: "grouveau1@gmail.com", groupe: "TC2"},
+                {numero: "95", nom: "SINCERE", prenom: "Matthias", email: "matthiassincere77@gmail.com", groupe: "TC2"},
+                {numero: "96", nom: "TECHER", prenom: "Dorian", email: "dorian22tch07@gmail.com", groupe: "TC2"},
+                {numero: "97", nom: "VIDOT", prenom: "Malia", email: "vmaliasania@gmail.com", groupe: "TC2"},
+                {numero: "98", nom: "VIRASSAMY SACRI", prenom: "Laura", email: "lvirassamysacri10@gmail.com", groupe: "TC2"},
+                {numero: "99", nom: "AMADA", prenom: "Ishaka", email: "ishakaamada@gmail.com", groupe: "TC3"},
+                {numero: "100", nom: "ARZAC", prenom: "Maxime", email: "maxarza974@gmail.com", groupe: "TC3"},
+                {numero: "101", nom: "AUBIN", prenom: "Lucas", email: "lucasabn07@gmail.com", groupe: "TC3"},
+                {numero: "102", nom: "BANOR", prenom: "Maeva", email: "maeva.banor9@gmail.com", groupe: "TC3"},
+                {numero: "103", nom: "BARBE", prenom: "Arnaud", email: "barbe-arnaud@hotmail.fr", groupe: "TC3"},
+                {numero: "104", nom: "BATONNET", prenom: "Marine", email: "batonnetmarine@gmail.com", groupe: "TC3"},
+                {numero: "105", nom: "CAMBOUR", prenom: "Léa", email: "lea.cambour@gmail.com", groupe: "TC3"},
+                {numero: "106", nom: "CARVALHO", prenom: "Léo", email: "Andradeleo97410@gmail.com", groupe: "TC3"},
+                {numero: "107", nom: "CHAUFFARD", prenom: "Corentin", email: "chauffardcorentin@gmail.com", groupe: "TC3"},
+                {numero: "108", nom: "COLAS", prenom: "Paul", email: "colaspaul974@gmail.com", groupe: "TC3"},
+                {numero: "109", nom: "DELPON", prenom: "Samuel", email: "delpon.samuel@gmail.com", groupe: "TC3"},
+                {numero: "110", nom: "DUBARD", prenom: "Lucile", email: "lucile.dubard04@gmail.com", groupe: "TC3"},
+                {numero: "111", nom: "FURCY", prenom: "Marine", email: "marine.furcy37@gmail.com", groupe: "TC3"},
+                {numero: "112", nom: "GERMAIN", prenom: "Amira", email: "germainamira@gmail.com", groupe: "TC3"},
+                {numero: "113", nom: "HOARAU", prenom: "Stacy", email: "stacyhoarau974@gmail.com", groupe: "TC3"},
+                {numero: "114", nom: "KLOTZ", prenom: "Titouan", email: "klo.titouan@gmail.com", groupe: "TC3"},
+                {numero: "115", nom: "LAW-THIME", prenom: "Angélique", email: "angelique.lawthime@gmail.com", groupe: "TC3"},
+                {numero: "116", nom: "LEFEVRE", prenom: "Médéris", email: "mederis14@gmail.com", groupe: "TC3"},
+                {numero: "117", nom: "MINATCHY", prenom: "Daina", email: "dainaminatchye@gmail.com", groupe: "TC3"},
+                {numero: "118", nom: "MOUSSA", prenom: "Yamine", email: "jeanbobmoussa@gmail.com", groupe: "TC3"},
+                {numero: "119", nom: "MOYANO", prenom: "Rachel", email: "rach.moya13@gmail.com", groupe: "TC3"},
+                {numero: "120", nom: "NICOLLE", prenom: "Romy", email: "n.romy@icloud.com", groupe: "TC3"},
+                {numero: "121", nom: "NOEL", prenom: "Liv", email: "noeliv974@icloud.com", groupe: "TC3"},
+                {numero: "122", nom: "PAYET", prenom: "Inès", email: "inespayet25@gmail.com", groupe: "TC3"},
+                {numero: "123", nom: "RIVIERE", prenom: "Estelle", email: "estelleriviere12@gmail.com", groupe: "TC3"},
+                {numero: "124", nom: "ROUBY", prenom: "Maiwenn", email: "roubymaiwenn@gmail.com", groupe: "TC3"},
+                {numero: "125", nom: "RUISI", prenom: "Mathis", email: "mathisruisi.pro@gmail.com", groupe: "TC3"},
+                {numero: "126", nom: "SAID ABDALLAH", prenom: "Nourdine", email: "nourdinesaidabdallah83@gmail.com", groupe: "TC3"},
+                {numero: "127", nom: "SERY", prenom: "Samuel", email: "samuelosery@gmail.com", groupe: "TC3"},
+                {numero: "128", nom: "TAOCHY", prenom: "Lauréline", email: "laurelinetaochy@gmail.com", groupe: "TC3"},
+                {numero: "129", nom: "VIENNE", prenom: "David", email: "jeandavidvienne29@gmail.com", groupe: "TC3"},
+                {numero: "130", nom: "THOMAS", prenom: "Yaelle", email: "thomas.yaelle.cedrine@gmail.com", groupe: "TC3"}
+            ]
+        };
+
+        // ===== VARIABLES GLOBALES =====
+        let currentPromo = "all";
+        let currentGroup = "all";
+        let currentSearch = "";
+        let allAlumni = [];
+        let filteredAlumni = [];
+        let currentPage = 1;
+        const alumniPerPage = 12;
+        let currentView = "grid";
+
+        // ===== INITIALISATION =====
+        document.addEventListener('DOMContentLoaded', function() {
+            // Calculer le total d'alumni
+            calculateTotalAlumni();
+            
+            // Générer les onglets de promotion
+            generatePromoTabs();
+            
+            // Initialiser les événements
+            setupEventListeners();
+            
+            // Initialiser le menu mobile
+            initMobileMenu();
+            
+            // Générer les cartes d'alumni
+            generateAlumniCards();
+            
+            // Générer la pagination
+            generatePagination();
+        });
+
+        // ===== FONCTIONS UTILITAIRES =====
+        function calculateTotalAlumni() {
+            let total = 0;
+            for (const promo in alumniData) {
+                total += alumniData[promo].length;
+            }
+            
+            // Préparer toutes les données pour la recherche
+            for (const promo in alumniData) {
+                alumniData[promo].forEach(alumni => {
+                    alumni.promo = promo;
+                    allAlumni.push(alumni);
+                });
+            }
+            
+            filteredAlumni = [...allAlumni];
+            
+            // Mettre à jour le compteur total
+            document.getElementById('total-count').innerHTML = `<span class="highlight">${total}</span> alumni au total`;
+        }
+
+        function generatePromoTabs() {
+            const promoContainer = document.getElementById('promo-tabs');
+            if (!promoContainer) return;
+            
+            const promotions = Object.keys(alumniData);
+            
+            // Ajouter l'onglet "Toutes"
+            const allTab = document.createElement('button');
+            allTab.className = 'promo-tab active';
+            allTab.textContent = 'Toutes les promotions';
+            allTab.dataset.promo = 'all';
+            promoContainer.appendChild(allTab);
+            
+            // Ajouter les onglets pour chaque promotion
+            promotions.forEach(promo => {
+                const tab = document.createElement('button');
+                tab.className = 'promo-tab';
+                tab.textContent = promo;
+                tab.dataset.promo = promo;
+                promoContainer.appendChild(tab);
+            });
+        }
+
+        function getInitials(nom, prenom) {
+            return (prenom.charAt(0) + nom.charAt(0)).toUpperCase();
+        }
+
+        function generateAlumniCards() {
+            const grid = document.getElementById('alumni-grid');
+            if (!grid) return;
+            
+            grid.innerHTML = '';
+            
+            // Calculer les indices pour la pagination
+            const startIndex = (currentPage - 1) * alumniPerPage;
+            const endIndex = startIndex + alumniPerPage;
+            const alumniToDisplay = filteredAlumni.slice(startIndex, endIndex);
+            
+            // Afficher un message si aucun résultat
+            if (filteredAlumni.length === 0) {
+                const noResults = document.createElement('div');
+                noResults.className = 'no-results';
+                noResults.innerHTML = `
+                    <div class="no-results-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Aucun alumni trouvé</h3>
+                    <p>Essayez de modifier vos critères de recherche ou de filtrage</p>
+                    <button class="btn btn-primary" id="reset-filters">
+                        <i class="fas fa-redo"></i> Réinitialiser les filtres
+                    </button>
+                `;
+                grid.appendChild(noResults);
+                
+                // Ajouter l'événement pour le bouton de réinitialisation
+                document.getElementById('reset-filters').addEventListener('click', function() {
+                    document.getElementById('promo-filter').value = 'all';
+                    document.getElementById('group-filter').value = 'all';
+                    document.getElementById('search-input').value = '';
+                    currentPromo = 'all';
+                    currentGroup = 'all';
+                    currentSearch = '';
+                    
+                    // Mettre à jour les onglets
+                    document.querySelectorAll('.promo-tab').forEach(tab => {
+                        tab.classList.remove('active');
+                        if (tab.dataset.promo === 'all') {
+                            tab.classList.add('active');
+                        }
+                    });
+                    
+                    filterAlumni();
+                });
+                
+                return;
+            }
+            
+            // Générer les cartes
+            alumniToDisplay.forEach(alumni => {
+                const card = document.createElement('div');
+                card.className = 'alumni-card fade-in';
+                
+                // Déterminer l'affichage du groupe
+                let groupeDisplay = '';
+                if (alumni.groupe && alumni.groupe.trim() !== '') {
+                    groupeDisplay = `<div class="promo-badge">${alumni.groupe}</div>`;
+                }
+                
+                card.innerHTML = `
+                    <div class="alumni-avatar">
+                        <div class="avatar-initials">${getInitials(alumni.nom, alumni.prenom)}</div>
+                        ${groupeDisplay}
+                    </div>
+                    <div class="alumni-info">
+                        <h3 class="alumni-name">${alumni.prenom} ${alumni.nom}</h3>
+                        <div class="alumni-details">
+                            <p><i class="fas fa-graduation-cap"></i> Promotion ${alumni.promo}</p>
+                            ${alumni.groupe && alumni.groupe.trim() !== '' ? `<p><i class="fas fa-users"></i> Groupe ${alumni.groupe}</p>` : ''}
+                        </div>
+                        <div class="alumni-contact">
+                            <div class="contact-item">
+                                <i class="fas fa-id-badge"></i>
+                                <span>N° ${alumni.numero}</span>
+                            </div>
+                            <div class="contact-item">
+                                <i class="fas fa-envelope"></i>
+                                <span>${alumni.email}</span>
+                            </div>
+                        </div>
+                        <div class="contact-actions">
+                            <a href="mailto:${alumni.email}" class="contact-btn">
+                                <i class="fas fa-envelope"></i> Contacter
+                            </a>
+                            <a href="#" class="contact-btn secondary" onclick="viewAlumniProfile('${alumni.prenom}', '${alumni.nom}')">
+                                <i class="fas fa-user"></i> Profil
+                            </a>
+                        </div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+            
+            // Mettre à jour les compteurs
+            document.getElementById('filtered-count').innerHTML = `<span class="highlight">${filteredAlumni.length}</span> résultat(s)`;
+            
+            // Mettre à jour le compteur de page
+            const pageInfo = document.createElement('div');
+            pageInfo.className = 'stat-badge';
+            pageInfo.innerHTML = `Page ${currentPage} sur ${Math.ceil(filteredAlumni.length / alumniPerPage)}`;
+            document.querySelector('.stats-info').appendChild(pageInfo);
+        }
+
+        function generatePagination() {
+            const pagination = document.getElementById('pagination');
+            if (!pagination) return;
+            
+            const totalPages = Math.ceil(filteredAlumni.length / alumniPerPage);
+            
+            // Si une seule page, ne pas afficher la pagination
+            if (totalPages <= 1) {
+                pagination.innerHTML = '';
+                return;
+            }
+            
+            let paginationHTML = '';
+            
+            // Bouton précédent
+            paginationHTML += `
+                <button class="page-btn ${currentPage === 1 ? 'disabled' : ''}" id="prev-page">
+                    <i class="fas fa-chevron-left"></i>
+                </button>
+            `;
+            
+            // Pages numérotées
+            for (let i = 1; i <= totalPages; i++) {
+                if (i === 1 || i === totalPages || (i >= currentPage - 1 && i <= currentPage + 1)) {
+                    paginationHTML += `
+                        <button class="page-btn ${currentPage === i ? 'active' : ''}" data-page="${i}">
+                            ${i}
+                        </button>
+                    `;
+                } else if (i === currentPage - 2 || i === currentPage + 2) {
+                    paginationHTML += `<span class="page-dots">...</span>`;
+                }
+            }
+            
+            // Bouton suivant
+            paginationHTML += `
+                <button class="page-btn ${currentPage === totalPages ? 'disabled' : ''}" id="next-page">
+                    <i class="fas fa-chevron-right"></i>
+                </button>
+            `;
+            
+            pagination.innerHTML = paginationHTML;
+            
+            // Ajouter les événements
+            document.getElementById('prev-page')?.addEventListener('click', function() {
+                if (currentPage > 1) {
+                    currentPage--;
+                    generateAlumniCards();
+                    generatePagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            document.getElementById('next-page')?.addEventListener('click', function() {
+                if (currentPage < totalPages) {
+                    currentPage++;
+                    generateAlumniCards();
+                    generatePagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+            });
+            
+            document.querySelectorAll('.page-btn[data-page]').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    currentPage = parseInt(this.dataset.page);
+                    generateAlumniCards();
+                    generatePagination();
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                });
+            });
+        }
+
+        function filterAlumni() {
+            currentPage = 1; // Réinitialiser à la première page
+            
+            // Filtrer par promotion
+            if (currentPromo !== "all") {
+                filteredAlumni = allAlumni.filter(alumni => alumni.promo === currentPromo);
+            } else {
+                filteredAlumni = [...allAlumni];
+            }
+            
+            // Filtrer par groupe
+            if (currentGroup !== "all") {
+                if (currentGroup === "none") {
+                    filteredAlumni = filteredAlumni.filter(alumni => !alumni.groupe || alumni.groupe.trim() === "");
+                } else {
+                    filteredAlumni = filteredAlumni.filter(alumni => alumni.groupe === currentGroup);
+                }
+            }
+            
+            // Filtrer par recherche
+            if (currentSearch.trim() !== "") {
+                const searchTerm = currentSearch.toLowerCase();
+                filteredAlumni = filteredAlumni.filter(alumni => 
+                    alumni.nom.toLowerCase().includes(searchTerm) ||
+                    alumni.prenom.toLowerCase().includes(searchTerm) ||
+                    alumni.email.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            // Regénérer les cartes et la pagination
+            generateAlumniCards();
+            generatePagination();
+        }
+
+        function setupEventListeners() {
+            // Gestion des onglets de promotion
+            document.getElementById('promo-tabs')?.addEventListener('click', function(e) {
+                if (e.target.classList.contains('promo-tab')) {
+                    // Mettre à jour l'état actif
+                    document.querySelectorAll('.promo-tab').forEach(t => t.classList.remove('active'));
+                    e.target.classList.add('active');
+                    
+                    // Mettre à jour la promotion sélectionnée
+                    currentPromo = e.target.dataset.promo;
+                    
+                    // Mettre à jour le sélecteur
+                    document.getElementById('promo-filter').value = currentPromo;
+                    
+                    // Filtrer les alumni
+                    filterAlumni();
+                }
+            });
+            
+            // Gestion du sélecteur de promotion
+            document.getElementById('promo-filter')?.addEventListener('change', function() {
+                currentPromo = this.value;
+                
+                // Mettre à jour les onglets
+                document.querySelectorAll('.promo-tab').forEach(tab => {
+                    tab.classList.remove('active');
+                    if (tab.dataset.promo === currentPromo) {
+                        tab.classList.add('active');
+                    }
+                });
+                
+                // Filtrer les alumni
+                filterAlumni();
+            });
+            
+            // Gestion du sélecteur de groupe
+            document.getElementById('group-filter')?.addEventListener('change', function() {
+                currentGroup = this.value;
+                filterAlumni();
+            });
+            
+            // Gestion de la recherche
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.addEventListener('input', function() {
+                    currentSearch = this.value;
+                    
+                    // Délai pour éviter de recalculer à chaque frappe
+                    clearTimeout(this.searchTimeout);
+                    this.searchTimeout = setTimeout(() => {
+                        filterAlumni();
+                    }, 300);
+                });
+            }
+            
+            // Gestion du changement de vue
+            document.getElementById('grid-view')?.addEventListener('click', function() {
+                if (!this.classList.contains('active')) {
+                    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentView = 'grid';
+                    document.getElementById('alumni-grid').classList.remove('list-view');
+                }
+            });
+            
+            document.getElementById('list-view')?.addEventListener('click', function() {
+                if (!this.classList.contains('active')) {
+                    document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    currentView = 'list';
+                    document.getElementById('alumni-grid').classList.add('list-view');
+                    // Note: Vous devrez ajouter le style pour la vue liste
+                }
+            });
+        }
+
+        function initMobileMenu() {
+            const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+            const navLinks = document.getElementById('navLinks');
+            
+            if (mobileMenuBtn && navLinks) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                    this.innerHTML = navLinks.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+                });
+                
+                // Fermer le menu mobile lors du clic sur un lien
+                document.querySelectorAll('.nav-links a').forEach(link => {
+                    link.addEventListener('click', function() {
+                        navLinks.classList.remove('active');
+                        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+            }
+        }
+
+        function viewAlumniProfile(prenom, nom) {
+            alert(`Profil de ${prenom} ${nom}\n\nCette fonctionnalité est en développement. Dans une version future, vous pourrez voir le profil complet avec :\n\n• Parcours professionnel\n• Expériences\n• Compétences\n• Coordonnées complètes\n• Réseaux sociaux\n\nContactez-nous si vous souhaitez mettre à jour vos informations.`);
+            return false;
+        }
+
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.getElementById('header');
+        
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+
+        // ===== ANIMATION ON SCROLL =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments à animer
+        document.querySelectorAll('.page-hero-content, .directory-filters, .alumni-stats, .alumni-card').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
+               

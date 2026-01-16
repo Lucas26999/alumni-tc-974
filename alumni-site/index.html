@@ -1,0 +1,1318 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Réseau Alumni TC | IUT Saint-Pierre - Plateforme d'anciens étudiants</title>
+    <meta name="description" content="Réseau professionnel des anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre à La Réunion. Connectez-vous, échangez et développez votre réseau.">
+    <meta name="keywords" content="alumni, IUT Saint-Pierre, BUT TC, Techniques de Commercialisation, réseau professionnel, Réunion, anciens étudiants">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            margin-bottom: 60px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 25px;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            background-color: var(--white);
+            padding: 25px 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+        }
+
+        .stat-item:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .stat-number {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: var(--gray);
+            font-weight: 500;
+        }
+
+        /* ===== SECTIONS COMMON STYLES ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== PROMOTIONS SECTION ===== */
+        .promotions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .promo-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-card:hover {
+            transform: translateY(-15px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .promo-img-container {
+            height: 220px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .promo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: var(--transition);
+        }
+
+        .promo-card:hover .promo-img {
+            transform: scale(1.05);
+        }
+
+        .promo-year {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 8px 18px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .promo-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .promo-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .promo-content p {
+            color: var(--gray);
+            margin-bottom: 25px;
+            flex-grow: 1;
+        }
+
+        .promo-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: auto;
+            padding-top: 20px;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .promo-students {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        /* ===== TESTIMONIALS SECTION ===== */
+        .testimonials-section {
+            background-color: #f8fafc;
+            position: relative;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .testimonial-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .testimonial-quote {
+            font-size: 1.5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 20px;
+            left: 25px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--dark-light);
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 1;
+            line-height: 1.7;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--gray-light);
+        }
+
+        .author-info h4 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--primary);
+        }
+
+        .service-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            font-size: 1.8rem;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .service-card p {
+            color: var(--gray);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .promotions-grid,
+            .testimonials-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Alumni TC</h1>
+                        <p>IUT de Saint-Pierre - Réunion</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link active">Accueil</a>
+                    <a href="about.html" class="nav-link">À propos</a>
+                    <a href="promotions.html" class="nav-link">Promotions</a>
+                    <a href="events.html" class="nav-link">Évènements</a>
+                    <a href="directory.html" class="nav-link">Annuaire</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="btn btn-primary" style="padding: 12px 24px;">Espace membre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <h1 class="hero-title">Réseau des <span style="color: var(--secondary);">Alumni TC</span></h1>
+                <p class="hero-subtitle">
+                    Rejoignez la communauté des anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre. Connectez-vous, échangez et développez votre réseau professionnel à La Réunion et au-delà.
+                </p>
+                
+                <div class="hero-buttons">
+                    <a href="register.html" class="btn btn-primary">
+                        <i class="fas fa-user-plus"></i> Rejoindre le réseau
+                    </a>
+                    <a href="promotions.html" class="btn btn-secondary">
+                        <i class="fas fa-users"></i> Découvrir les promotions
+                    </a>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-item fade-in delay-1">
+                        <div class="stat-number">150+</div>
+                        <div class="stat-label">Alumni actifs</div>
+                    </div>
+                    <div class="stat-item fade-in delay-2">
+                        <div class="stat-number">6</div>
+                        <div class="stat-label">Promotions</div>
+                    </div>
+                    <div class="stat-item fade-in delay-3">
+                        <div class="stat-number">85%</div>
+                        <div class="stat-label">Insertion professionnelle</div>
+                    </div>
+                    <div class="stat-item fade-in delay-4">
+                        <div class="stat-number">30</div>
+                        <div class="stat-label">Mentors engagés</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROMOTIONS SECTION -->
+    <section class="section" id="promotions">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Les Promotions TC</h2>
+                <p>Découvrez les différentes générations d'étudiants diplômés du BUT Techniques de Commercialisation</p>
+            </div>
+            
+            <div class="promotions-grid">
+                <!-- Promotion 2018-2019 -->
+                <div class="promo-card fade-in">
+                    <div class="promo-img-container">
+                        <img src="images/promo-2018.jpg" alt="Promotion 2018-2019 BUT TC" class="promo-img">
+                        <span class="promo-year">2018-2019</span>
+                    </div>
+                    <div class="promo-content">
+                        <h3>Promotion Pionnière</h3>
+                        <p>25 diplômés qui ont inauguré le BUT TC à l'IUT de Saint-Pierre. Aujourd'hui répartis dans divers secteurs professionnels à La Réunion et en métropole.</p>
+                        
+                        <div class="promo-meta">
+                            <div class="promo-students">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>25 diplômés</span>
+                            </div>
+                            <a href="promotion-2018.html" class="btn btn-secondary" style="padding: 10px 20px;">
+                                Voir les alumni <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promotion 2020-2021 -->
+                <div class="promo-card fade-in delay-1">
+                    <div class="promo-img-container">
+                        <img src="images/promo-2020.jpg" alt="Promotion 2020-2021 BUT TC" class="promo-img">
+                        <span class="promo-year">2020-2021</span>
+                    </div>
+                    <div class="promo-content">
+                        <h3>Promotion Résiliente</h3>
+                        <p>50 étudiants ayant relevé le défi de la formation à distance pendant la pandémie. Résilience et adaptation sont les maîtres-mots de cette promotion.</p>
+                        
+                        <div class="promo-meta">
+                            <div class="promo-students">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>50 diplômés</span>
+                            </div>
+                            <a href="promotion-2020.html" class="btn btn-secondary" style="padding: 10px 20px;">
+                                Voir les alumni <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Promotion 2024-2025 -->
+                <div class="promo-card fade-in delay-2">
+                    <div class="promo-img-container">
+                        <img src="images/promo-2024.jpg" alt="Promotion 2024-2025 BUT TC" class="promo-img">
+                        <span class="promo-year">2024-2025</span>
+                    </div>
+                    <div class="promo-content">
+                        <h3>Promotion Actuelle</h3>
+                        <p>49 étudiants en formation. Futurs professionnels du marketing, de la vente et du commerce. Une génération connectée et entrepreneuse.</p>
+                        
+                        <div class="promo-meta">
+                            <div class="promo-students">
+                                <i class="fas fa-user-graduate"></i>
+                                <span>49 étudiants</span>
+                            </div>
+                            <a href="promotion-2024.html" class="btn btn-secondary" style="padding: 10px 20px;">
+                                Voir les étudiants <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 50px;">
+                <a href="promotions.html" class="btn btn-primary">
+                    <i class="fas fa-list"></i> Voir toutes les promotions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS SECTION -->
+    <section class="section testimonials-section" id="testimonials">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Témoignages</h2>
+                <p>Découvrez les retours d'expérience de nos alumni et étudiants</p>
+            </div>
+            
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"Le réseau alumni m'a permis de trouver mon stage de fin d'études et ensuite mon premier emploi. Une vraie communauté solidaire qui continue de m'accompagner dans mon évolution professionnelle."</p>
+                    <div class="testimonial-author">
+                        <img src="images/alumni-1.jpg" alt="Anais Michel" class="author-img">
+                        <div class="author-info">
+                            <h4>Anais MICHEL</h4>
+                            <p>Promotion 2018-2019 • Chargée de Marketing Digital</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in delay-1">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"Grâce au programme de mentorat, j'ai pu bénéficier de conseils précieux pour mon orientation professionnelle. Mon mentor m'a aidé à préparer mes entretiens et à négocier mon premier salaire."</p>
+                    <div class="testimonial-author">
+                        <img src="images/alumni-2.jpg" alt="Yannis Ambroise" class="author-img">
+                        <div class="author-info">
+                            <h4>Yannis AMBROISE</h4>
+                            <p>Promotion 2020-2021 • Commercial B2B</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="testimonial-card fade-in delay-2">
+                    <div class="testimonial-quote">"</div>
+                    <p class="testimonial-text">"Les événements organisés par le réseau sont d'excellentes occasions de networking. J'y ai rencontré mon employeur actuel lors d'un afterwork alumni. Ce réseau est un véritable accélérateur de carrière."</p>
+                    <div class="testimonial-author">
+                        <img src="images/alumni-3.jpg" alt="Madlyne Boyer" class="author-img">
+                        <div class="author-info">
+                            <h4>Madlyne BOYER</h4>
+                            <p>Promotion 2018-2019 • Chef de projet digital</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="services">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Nos Services</h2>
+                <p>Découvrez comment le réseau alumni peut vous accompagner tout au long de votre parcours</p>
+            </div>
+            
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-network-wired"></i>
+                    </div>
+                    <h3>Réseau Professionnel</h3>
+                    <p>Connectez-vous avec les alumni selon votre secteur d'activité, localisation ou centres d'intérêt. Élargissez votre cercle professionnel.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <h3>Programme de Mentorat</h3>
+                    <p>Bénéficiez de l'expérience des anciens pour votre orientation et développement professionnel. Trouvez un mentor ou devenez-en un.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-2">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <h3>Opportunités Carrière</h3>
+                    <p>Accédez aux offres d'emploi, stages et projets réservés aux membres du réseau. Trouvez votre prochain défi professionnel.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-3">
+                    <div class="service-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Événements Exclusifs</h3>
+                    <p>Participez à des afterworks, conférences, ateliers et rencontres professionnelles organisés spécialement pour les alumni.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-4">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Veille Sectorielle</h3>
+                    <p>Restez informé des dernières tendances du marketing, du commerce et de la vente grâce à notre veille sectorielle partagée.</p>
+                </div>
+                
+                <div class="service-card fade-in delay-1">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Partenariats Avantageux</h3>
+                    <p>Profitez de réductions et avantages négociés par le réseau auprès de partenaires (formations, logiciels, services...).</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2 class="cta-title">Prêt à rejoindre la communauté ?</h2>
+                <p class="cta-text">Inscrivez-vous gratuitement et profitez de tous les avantages du réseau alumni TC. Développez votre réseau, accédez à des opportunités exclusives et participez à la vie de la communauté.</p>
+                
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn btn-primary" style="background: var(--white); color: var(--primary);">
+                        <i class="fas fa-user-plus"></i> Créer mon profil
+                    </a>
+                    <a href="contact.html" class="btn btn-outline">
+                        <i class="fas fa-envelope"></i> Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-lut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="footer-logo">
+                    <div class="footer-about">
+                        <p>Réseau Alumni du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre, La Réunion. Une plateforme dédiée à la connexion, l'échange et l'entraide entre anciens étudiants.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="promotions.html"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+                        <li><a href="directory.html"><i class="fas fa-chevron-right"></i> Annuaire</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="mentorship.html"><i class="fas fa-chevron-right"></i> Programme de mentorat</a></li>
+                        <li><a href="jobs.html"><i class="fas fa-chevron-right"></i> Offres d'emploi</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Calendrier des événements</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Ressources professionnelles</a></li>
+                        <li><a href="partners.html"><i class="fas fa-chevron-right"></i> Partenariats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>IUT de Saint-Pierre</strong><br>
+                                Campus universitaire<br>
+                                97410 Saint-Pierre, La Réunion
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+262 262 96 90 00</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>alumni.tc@iut-reunion.fr</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Réseau Alumni TC - IUT de Saint-Pierre. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Projet académique - BUT Techniques de Commercialisation | <a href="privacy.html" style="color: #94a3b8; text-decoration: underline;">Politique de confidentialité</a> | <a href="terms.html" style="color: #94a3b8; text-decoration: underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // ===== ANIMATION ON SCROLL =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments à animer
+        document.querySelectorAll('.section-title, .promo-card, .testimonial-card, .service-card, .cta-content').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // ===== VÉRIFICATION DES IMAGES (DEBUG) =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'images/logo-lut.jpg',
+                'images/promo-2018.jpg', 
+                'images/promo-2020.jpg',
+                'images/promo-2024.jpg',
+                'images/alumni-1.jpg',
+                'images/alumni-2.jpg',
+                'images/alumni-3.jpg',
+                'images/logo-lut-blanc.jpg'
+            ];
+            
+            console.log('=== VÉRIFICATION DES IMAGES ===');
+            images.forEach(img => {
+                const testImg = new Image();
+                testImg.onload = () => console.log(`✅ ${img} trouvée`);
+                testImg.onerror = () => console.log(`❌ ${img} NON trouvée - Placez l'image dans le dossier "images/"`);
+                testImg.src = img;
+            });
+            
+            // Message pour les images manquantes
+            console.log('ℹ️ Pour les images manquantes, vous pouvez :');
+            console.log('1. Créer un dossier "images" à côté du fichier HTML');
+            console.log('2. Télécharger des images pertinentes et les nommer comme indiqué');
+            console.log('3. Ou utiliser des images de substitution depuis unsplash.com');
+        });
+        
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>

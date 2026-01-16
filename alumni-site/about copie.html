@@ -1,0 +1,987 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion | Réseau Alumni TC IUT Saint-Pierre</title>
+    <meta name="description" content="Connectez-vous à votre espace membre du réseau alumni TC de l'IUT de Saint-Pierre à La Réunion">
+    <meta name="keywords" content="connexion, alumni, IUT Saint-Pierre, BUT TC, espace membre">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== LOGIN SECTION ===== */
+        .login-section {
+            padding: 180px 0 120px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        .login-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .login-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-info {
+            padding-right: 40px;
+        }
+
+        .login-info h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .login-info p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .login-features {
+            margin-top: 40px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+            color: var(--dark);
+        }
+
+        .feature-content p {
+            font-size: 0.95rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        /* ===== LOGIN FORM ===== */
+        .login-form-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 50px 40px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-light);
+        }
+
+        .login-form-container h2 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .login-form-container > p {
+            color: var(--gray);
+            margin-bottom: 30px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-light);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 16px 20px;
+            border: 2px solid var(--gray-light);
+            border-radius: var(--radius);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--light);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            background-color: var(--white);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .password-input-container {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--gray);
+            cursor: pointer;
+            font-size: 1.1rem;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            color: var(--dark-light);
+        }
+
+        .remember-me input {
+            width: 18px;
+            height: 18px;
+            cursor: pointer;
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .login-button {
+            width: 100%;
+            margin-bottom: 25px;
+        }
+
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 30px 0;
+            color: var(--gray);
+        }
+
+        .divider::before, .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: var(--gray-light);
+        }
+
+        .divider span {
+            padding: 0 15px;
+            font-size: 0.9rem;
+        }
+
+        .social-login {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .social-btn {
+            flex: 1;
+            padding: 14px;
+            border-radius: var(--radius);
+            border: 2px solid var(--gray-light);
+            background-color: var(--white);
+            color: var(--dark);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .social-btn:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .register-link {
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.95rem;
+        }
+
+        .register-link a {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .register-link a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .login-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .login-info {
+                padding-right: 0;
+                text-align: center;
+            }
+            
+            .login-info h1 {
+                font-size: 2.5rem;
+            }
+            
+            .feature-item {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .login-section {
+                padding: 150px 0 80px;
+            }
+            
+            .login-form-container {
+                padding: 40px 30px;
+            }
+            
+            .social-login {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .login-info h1 {
+                font-size: 2rem;
+            }
+            
+            .login-form-container h2 {
+                font-size: 1.7rem;
+            }
+            
+            .form-options {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Alumni TC</h1>
+                        <p>IUT de Saint-Pierre - Réunion</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="about.html" class="nav-link">À propos</a>
+                    <a href="promotions.html" class="nav-link">Promotions</a>
+                    <a href="events.html" class="nav-link">Évènements</a>
+                    <a href="directory.html" class="nav-link">Annuaire</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="nav-link active">Espace membre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- LOGIN SECTION -->
+    <section class="login-section">
+        <div class="container">
+            <div class="login-container">
+                <div class="login-info fade-in">
+                    <h1>Bienvenue sur votre espace membre</h1>
+                    <p>Connectez-vous pour accéder à toutes les fonctionnalités réservées aux alumni TC : annuaire, offres d'emploi, événements exclusifs et bien plus encore.</p>
+                    
+                    <div class="login-features">
+                        <div class="feature-item fade-in">
+                            <div class="feature-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Réseau exclusif</h3>
+                                <p>Accédez à l'annuaire complet des anciens étudiants et élargissez votre réseau professionnel</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item fade-in">
+                            <div class="feature-icon">
+                                <i class="fas fa-briefcase"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Opportunités professionnelles</h3>
+                                <p>Consultez les offres d'emploi et de stage réservées aux membres du réseau</p>
+                            </div>
+                        </div>
+                        
+                        <div class="feature-item fade-in">
+                            <div class="feature-icon">
+                                <i class="fas fa-calendar-alt"></i>
+                            </div>
+                            <div class="feature-content">
+                                <h3>Événements privés</h3>
+                                <p>Inscrivez-vous aux événements, afterworks et conférences réservés aux alumni</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="login-form-container fade-in">
+                    <h2>Connexion</h2>
+                    <p>Entrez vos identifiants pour accéder à votre compte</p>
+                    
+                    <form id="loginForm">
+                        <div class="form-group">
+                            <label for="email">Adresse email</label>
+                            <input type="email" id="email" class="form-control" placeholder="alumni@exemple.com" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="password">Mot de passe</label>
+                            <div class="password-input-container">
+                                <input type="password" id="password" class="form-control" placeholder="Votre mot de passe" required>
+                                <button type="button" class="toggle-password" id="togglePassword">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <div class="remember-me">
+                                <input type="checkbox" id="remember">
+                                <label for="remember">Se souvenir de moi</label>
+                            </div>
+                            <a href="forgot-password.html" class="forgot-password">Mot de passe oublié ?</a>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary login-button">
+                            <i class="fas fa-sign-in-alt"></i> Se connecter
+                        </button>
+                    </form>
+                    
+                    <div class="divider">
+                        <span>Ou connectez-vous avec</span>
+                    </div>
+                    
+                    <div class="social-login">
+                        <button class="social-btn">
+                            <i class="fab fa-google" style="color: #DB4437;"></i>
+                            Google
+                        </button>
+                        <button class="social-btn">
+                            <i class="fab fa-linkedin" style="color: #0077B5;"></i>
+                            LinkedIn
+                        </button>
+                    </div>
+                    
+                    <div class="register-link">
+                        <p>Vous n'avez pas encore de compte ? <a href="register.html">Créer un compte</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="footer-logo">
+                    <div class="footer-about">
+                        <p>Réseau Alumni du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre, La Réunion. Une plateforme dédiée à la connexion, l'échange et l'entraide entre anciens étudiants.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="promotions.html"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+                        <li><a href="directory.html"><i class="fas fa-chevron-right"></i> Annuaire</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                        <li><a href="login.html"><i class="fas fa-chevron-right"></i> Espace membre</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="mentorship.html"><i class="fas fa-chevron-right"></i> Programme de mentorat</a></li>
+                        <li><a href="jobs.html"><i class="fas fa-chevron-right"></i> Offres d'emploi</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Calendrier des événements</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Ressources professionnelles</a></li>
+                        <li><a href="partners.html"><i class="fas fa-chevron-right"></i> Partenariats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>IUT de Saint-Pierre</strong><br>
+                                Campus universitaire<br>
+                                97410 Saint-Pierre, La Réunion
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+262 262 96 90 00</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>alumni.tc@iut-reunion.fr</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Réseau Alumni TC - IUT de Saint-Pierre. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Projet académique - BUT Techniques de Commercialisation | <a href="privacy.html" style="color: #94a3b8; text-decoration: underline;">Politique de confidentialité</a> | <a href="terms.html" style="color: #94a3b8; text-decoration: underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // ===== TOGGLE PASSWORD VISIBILITY =====
+        const togglePassword = document.getElementById('togglePassword');
+        const passwordInput = document.getElementById('password');
+        
+        togglePassword.addEventListener('click', () => {
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            passwordInput.setAttribute('type', type);
+            togglePassword.innerHTML = type === 'password' ? '<i class="fas fa-eye"></i>' : '<i class="fas fa-eye-slash"></i>';
+        });
+        
+        // ===== FORM SUBMISSION =====
+        const loginForm = document.getElementById('loginForm');
+        
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Ici, vous intégrerez la vraie logique de connexion
+            // Pour l'instant, nous simulons une connexion réussie
+            if (email && password) {
+                // Simulation de chargement
+                const submitBtn = loginForm.querySelector('button[type="submit"]');
+                const originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Connexion en cours...';
+                submitBtn.disabled = true;
+                
+                // Simulation d'un délai d'authentification
+                setTimeout(() => {
+                    // Redirection vers le tableau de bord (à adapter selon votre structure)
+                    window.location.href = 'dashboard.html';
+                    
+                    // Pour la démo, nous affichons un message de succès
+                    // alert('Connexion réussie ! Redirection vers votre tableau de bord...');
+                    // window.location.href = 'dashboard.html';
+                    
+                    // submitBtn.innerHTML = originalText;
+                    // submitBtn.disabled = false;
+                }, 1500);
+            } else {
+                alert('Veuillez remplir tous les champs');
+            }
+        });
+        
+        // ===== VÉRIFICATION DES IMAGES =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'images/logo-iut-blanc.jpg'
+            ];
+            
+            console.log('=== VÉRIFICATION DES IMAGES LOGIN ===');
+            images.forEach(img => {
+                const testImg = new Image();
+                testImg.onload = () => console.log(`✅ ${img} trouvée`);
+                testImg.onerror = () => console.log(`❌ ${img} NON trouvée - Placez l'image dans le dossier "images/"`);
+                testImg.src = img;
+            });
+        });
+    </script>
+</body>
+</html>

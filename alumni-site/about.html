@@ -1,0 +1,1477 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>À propos | Réseau Alumni TC - IUT Saint-Pierre</title>
+    <meta name="description" content="Découvrez le réseau Alumni TC de l'IUT de Saint-Pierre, son histoire, sa mission, et l'équipe qui le fait vivre.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS & RESET ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BOUTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        .btn-small {
+            padding: 10px 20px;
+            font-size: 0.9rem;
+        }
+
+        /* ===== HEADER & NAVIGATION ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== PAGE HERO ===== */
+        .page-hero {
+            padding: 150px 0 80px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .page-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .page-hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .page-hero p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .breadcrumb {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+        }
+
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .breadcrumb i {
+            font-size: 0.8rem;
+        }
+
+        /* ===== SECTIONS COMMUNES ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.3rem;
+            color: var(--dark-light);
+            max-width: 800px;
+            margin: 0 auto 50px;
+            line-height: 1.6;
+        }
+
+        /* ===== À PROPOS CONTENU ===== */
+        .about-content {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 60px;
+            box-shadow: var(--shadow);
+            margin-bottom: 80px;
+        }
+
+        .about-text {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--dark-light);
+            margin-bottom: 40px;
+        }
+
+        .about-text p {
+            margin-bottom: 25px;
+        }
+
+        .about-highlight {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.05), rgba(124, 58, 237, 0.05));
+            border-left: 4px solid var(--primary);
+            padding: 25px;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            margin: 40px 0;
+        }
+
+        .about-highlight p {
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--dark);
+            margin: 0;
+        }
+
+        /* ===== MISSIONS & VALEURS ===== */
+        .mission-vision {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .mission-card, .vision-card, .values-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .mission-card:hover, .vision-card:hover, .values-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mission-icon, .vision-icon, .values-icon {
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            font-size: 2rem;
+        }
+
+        .mission-card h3, .vision-card h3, .values-card h3 {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--dark);
+        }
+
+        /* ===== VALEURS GRID ===== */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .value-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--white);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .value-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .value-icon {
+            width: 70px;
+            height: 70px;
+            margin: 0 auto 20px;
+            background-color: rgba(37, 99, 235, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 1.8rem;
+        }
+
+        .value-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* ===== ÉQUIPE ===== */
+        .team-section {
+            background-color: #f8fafc;
+            position: relative;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .team-member {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .team-member:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .member-avatar {
+            height: 180px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 3.5rem;
+            font-weight: 700;
+        }
+
+        .member-info {
+            padding: 30px;
+        }
+
+        .member-info h3 {
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--dark);
+        }
+
+        .member-role {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 15px;
+            display: block;
+        }
+
+        .member-promo {
+            color: var(--gray);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .member-bio {
+            color: var(--dark-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .member-social {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--dark);
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== CHIFFRES CLÉS ===== */
+        .stats-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stats-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        /* ===== HISTORIQUE ===== */
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 80px auto 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            width: 100%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            padding-right: calc(50% + 30px);
+            text-align: right;
+        }
+
+        .timeline-item:nth-child(even) {
+            padding-left: calc(50% + 30px);
+            text-align: left;
+        }
+
+        .timeline-year {
+            position: absolute;
+            top: 0;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+        }
+
+        .timeline-item:nth-child(odd) .timeline-year {
+            right: calc(50% - 50px);
+        }
+
+        .timeline-item:nth-child(even) .timeline-year {
+            left: calc(50% - 50px);
+        }
+
+        .timeline-content {
+            background-color: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .timeline-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .page-hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item:nth-child(odd),
+            .timeline-item:nth-child(even) {
+                padding-left: 80px;
+                padding-right: 20px;
+                text-align: left;
+            }
+            
+            .timeline-item:nth-child(odd) .timeline-year,
+            .timeline-item:nth-child(even) .timeline-year {
+                left: 0;
+                right: auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .page-hero {
+                padding: 130px 0 60px;
+            }
+            
+            .page-hero h1 {
+                font-size: 2.4rem;
+            }
+            
+            .about-content {
+                padding: 30px;
+            }
+            
+            .mission-vision {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .page-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .stat-number {
+                font-size: 2.5rem;
+            }
+            
+            .about-content {
+                padding: 20px;
+            }
+            
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Alumni TC</h1>
+                        <p>IUT de Saint-Pierre - Réunion</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="about.html" class="nav-link active">À propos</a>
+                    <a href="promotions.html" class="nav-link">Promotions</a>
+                    <a href="events.html" class="nav-link">Évènements</a>
+                    <a href="directory.html" class="nav-link">Annuaire</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                    <a href="login.html" class="btn btn-primary btn-small">Espace membre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+        <div class="container">
+            <div class="page-hero-content fade-in">
+                <h1>À propos du réseau Alumni TC</h1>
+                <p>Découvrez l'histoire, la mission et les valeurs de notre réseau d'anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre.</p>
+                
+                <div class="breadcrumb">
+                    <a href="index.html">Accueil</a>
+                    <i class="fas fa-chevron-right"></i>
+                    <span>À propos</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTENU À PROPOS -->
+    <section class="section">
+        <div class="container">
+            <div class="about-content fade-in">
+                <div class="about-text">
+                    <h2 class="section-title">Notre histoire</h2>
+                    <p>Le réseau Alumni TC est né en 2020 de la volonté commune des diplômés du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre de maintenir des liens durables entre les promotions successives. Face au constat que les réseaux professionnels sont essentiels à l'insertion et à l'évolution de carrière, d'anciens étudiants se sont mobilisés pour créer cette plateforme dédiée à l'entraide et au partage.</p>
+                    
+                    <div class="about-highlight">
+                        <p>"Notre objectif est de créer un écosystème vertueux où chaque diplômé peut trouver soutien, inspiration et opportunités tout en contribuant au succès des générations suivantes."</p>
+                    </div>
+                    
+                    <p>En quelques années seulement, notre réseau a grandi pour rassembler plus de 150 alumni répartis sur 6 promotions. Chaque année, de nouveaux diplômés viennent enrichir notre communauté de leurs compétences, expériences et perspectives uniques.</p>
+                    
+                    <p>Basé à La Réunion mais ouvert sur le monde, notre réseau connecte désormais des professionnels travaillant dans des secteurs variés à travers l'île, la métropole et même à l'international.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MISSIONS & VISION -->
+    <section class="section" style="background-color: #f8fafc;">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Notre raison d'être</h2>
+                <p>Découvrez ce qui motive notre action au quotidien</p>
+            </div>
+            
+            <div class="mission-vision">
+                <div class="mission-card fade-in">
+                    <div class="mission-icon">
+                        <i class="fas fa-bullseye"></i>
+                    </div>
+                    <h3>Notre mission</h3>
+                    <p>Créer et maintenir un réseau solide et dynamique qui permet aux anciens étudiants de rester connectés, de partager leurs expériences professionnelles et de s'entraider mutuellement dans leurs parcours de carrière.</p>
+                </div>
+                
+                <div class="vision-card fade-in delay-1">
+                    <div class="vision-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3>Notre vision</h3>
+                    <p>Devenir la référence en matière de réseau d'anciens étudiants à La Réunion, reconnu pour la qualité de ses membres, l'impact positif qu'il génère et les opportunités qu'il crée pour la communauté professionnelle locale.</p>
+                </div>
+                
+                <div class="values-card fade-in delay-2">
+                    <div class="values-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3>Nos valeurs</h3>
+                    <p>Solidarité, partage, excellence professionnelle et engagement sont les piliers de notre action. Nous croyons en la force du collectif pour faire avancer chacun de ses membres.</p>
+                </div>
+            </div>
+            
+            <!-- VALEURS DÉTAILLÉES -->
+            <div class="values-grid fade-in delay-3">
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h4>Solidarité</h4>
+                    <p>Nous croyons en l'entraide entre générations et en la transmission des connaissances.</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <h4>Partage</h4>
+                    <p>Le partage d'expériences et d'opportunités est au cœur de notre communauté.</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-medal"></i>
+                    </div>
+                    <h4>Excellence</h4>
+                    <p>Nous encourageons l'excellence professionnelle et le développement continu.</p>
+                </div>
+                
+                <div class="value-item">
+                    <div class="value-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h4>Engagement</h4>
+                    <p>Chaque membre s'engage à contribuer activement à la vie du réseau.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CHIFFRES CLÉS -->
+    <section class="section stats-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Notre réseau en chiffres</h2>
+                <p style="color: rgba(255, 255, 255, 0.9);">Quelques données qui témoignent de notre croissance et de notre impact</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat-item fade-in">
+                    <div class="stat-number">150+</div>
+                    <div class="stat-label">Alumni actifs</div>
+                </div>
+                
+                <div class="stat-item fade-in delay-1">
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Promotions</div>
+                </div>
+                
+                <div class="stat-item fade-in delay-2">
+                    <div class="stat-number">85%</div>
+                    <div class="stat-label">Insertion professionnelle</div>
+                </div>
+                
+                <div class="stat-item fade-in delay-3">
+                    <div class="stat-number">30</div>
+                    <div class="stat-label">Mentors engagés</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ÉQUIPE -->
+    <section class="section team-section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Notre équipe</h2>
+                <p>Rencontrez les membres engagés qui font vivre le réseau au quotidien</p>
+            </div>
+            
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="member-avatar">
+                        AM
+                    </div>
+                    <div class="member-info">
+                        <h3>Anais MICHEL</h3>
+                        <span class="member-role">Présidente</span>
+                        <span class="member-promo">Promotion 2018-2019</span>
+                        <p class="member-bio">Diplômée pionnière de la première promotion TC, Anais dirige le réseau avec passion depuis sa création. Chargée de marketing digital dans une agence réunionnaise.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in delay-1">
+                    <div class="member-avatar">
+                        MB
+                    </div>
+                    <div class="member-info">
+                        <h3>Madlyne BOYER</h3>
+                        <span class="member-role">Vice-présidente</span>
+                        <span class="member-promo">Promotion 2018-2019</span>
+                        <p class="member-bio">Chef de projet digital expérimentée, Madlyne coordonne les événements et partenariats du réseau. Son réseau professionnel étendu est un atout majeur.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in delay-2">
+                    <div class="member-avatar">
+                        YA
+                    </div>
+                    <div class="member-info">
+                        <h3>Yannis AMBROISE</h3>
+                        <span class="member-role">Responsable mentorat</span>
+                        <span class="member-promo">Promotion 2024-2025</span>
+                        <p class="member-bio">Étudiant en dernière année, Yannis anime le programme de mentorat qui connecte les étudiants avec les alumni expérimentés.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="team-member fade-in delay-3">
+                    <div class="member-avatar">
+                        SM
+                    </div>
+                    <div class="member-info">
+                        <h3>Samy MOUNICHY</h3>
+                        <span class="member-role">Trésorier</span>
+                        <span class="member-promo">Promotion 2018-2019</span>
+                        <p class="member-bio">Expert-comptable de formation, Samy gère les aspects financiers du réseau avec rigueur et transparence.</p>
+                        <div class="member-social">
+                            <a href="#" class="social-link">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="social-link">
+                                <i class="fas fa-envelope"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HISTORIQUE -->
+    <section class="section">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Notre histoire en dates</h2>
+                <p>Les moments clés qui ont marqué l'évolution de notre réseau</p>
+            </div>
+            
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2018</div>
+                    <div class="timeline-content">
+                        <h3>Première promotion TC</h3>
+                        <p>25 étudiants obtiennent leur diplôme du BUT Techniques de Commercialisation, marquant la naissance de la filière à l'IUT de Saint-Pierre.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in delay-1">
+                    <div class="timeline-year">2020</div>
+                    <div class="timeline-content">
+                        <h3>Création du réseau</h3>
+                        <p>Un groupe d'anciens étudiants se réunit pour formaliser la création du réseau Alumni TC, avec pour objectif de maintenir les liens entre promotions.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in delay-2">
+                    <div class="timeline-year">2021</div>
+                    <div class="timeline-content">
+                        <h3>Premier événement alumni</h3>
+                        <p>Organisation du premier afterwork réunissant 3 promotions différentes. Un succès qui confirme l'intérêt pour le réseau.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in delay-3">
+                    <div class="timeline-year">2022</div>
+                    <div class="timeline-content">
+                        <h3>Lancement du programme de mentorat</h3>
+                        <p>Mise en place d'un programme structuré de mentorat permettant aux étudiants actuels de bénéficier de l'expérience des alumni.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in">
+                    <div class="timeline-year">2023</div>
+                    <div class="timeline-content">
+                        <h3>Dépassement des 100 membres</h3>
+                        <p>Le réseau franchit le cap symbolique des 100 membres actifs, représentant 4 promotions différentes.</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item fade-in delay-1">
+                    <div class="timeline-year">2024</div>
+                    <div class="timeline-content">
+                        <h3>Lancement de la plateforme digitale</h3>
+                        <p>Création du site web et de l'annuaire en ligne pour faciliter les connexions et les échanges entre membres.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2 class="cta-title">Rejoignez notre communauté</h2>
+                <p class="cta-text">Que vous soyez diplômé, étudiant en cours de formation ou simplement intéressé par notre réseau, nous serions ravis de vous accueillir parmi nous.</p>
+                
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn btn-primary" style="background: var(--white); color: var(--primary);">
+                        <i class="fas fa-user-plus"></i> Devenir membre
+                    </a>
+                    <a href="contact.html" class="btn btn-outline" style="border-color: var(--white); color: var(--white);">
+                        <i class="fas fa-envelope"></i> Nous contacter
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-lut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="footer-logo">
+                    <div class="footer-about">
+                        <p>Réseau Alumni du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre, La Réunion. Une plateforme dédiée à la connexion, l'échange et l'entraide entre anciens étudiants.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="promotions.html"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+                        <li><a href="directory.html"><i class="fas fa-chevron-right"></i> Annuaire</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="mentorship.html"><i class="fas fa-chevron-right"></i> Programme de mentorat</a></li>
+                        <li><a href="jobs.html"><i class="fas fa-chevron-right"></i> Offres d'emploi</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Calendrier des événements</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Ressources professionnelles</a></li>
+                        <li><a href="partners.html"><i class="fas fa-chevron-right"></i> Partenariats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>IUT de Saint-Pierre</strong><br>
+                                Campus universitaire<br>
+                                97410 Saint-Pierre, La Réunion
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+262 262 96 90 00</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>alumni.tc@iut-reunion.fr</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Réseau Alumni TC - IUT de Saint-Pierre. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Projet académique - BUT Techniques de Commercialisation | <a href="privacy.html" style="color: #94a3b8; text-decoration: underline;">Politique de confidentialité</a> | <a href="terms.html" style="color: #94a3b8; text-decoration: underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                    ? '<i class="fas fa-times"></i>' 
+                    : '<i class="fas fa-bars"></i>';
+            });
+            
+            // Fermer le menu mobile en cliquant sur un lien
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    navLinks.classList.remove('active');
+                    mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                });
+            });
+        }
+        
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.getElementById('header');
+        
+        if (header) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 100) {
+                    header.classList.add('header-scrolled');
+                } else {
+                    header.classList.remove('header-scrolled');
+                }
+            });
+        }
+        
+        // ===== ANIMATION ON SCROLL =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments à animer
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+        
+        // ===== VÉRIFICATION DES IMAGES =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('=== VÉRIFICATION DES IMAGES ===');
+            const images = ['images/LOGO.png', 'images/logo-lut-blanc.jpg'];
+            
+            images.forEach(img => {
+                const testImg = new Image();
+                testImg.onload = () => console.log(`✅ ${img} trouvée`);
+                testImg.onerror = () => console.log(`❌ ${img} NON trouvée`);
+                testImg.src = img;
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | Réseau Alumni TC | IUT Saint-Pierre</title>
+    <meta name="description" content="Contactez le réseau Alumni TC de l'IUT de Saint-Pierre. Posez vos questions, devenez mentor, proposez un partenariat ou signalez un problème.">
+    <meta name="keywords" content="contact alumni TC, IUT Saint-Pierre contact, réseau alumni contact, devenir mentor, partenariat entreprise">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES CSS (cohérent avec votre site) ===== */
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #7c3aed;
+            --accent: #3b82f6;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --dark-light: #334155;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --white: #ffffff;
+            --shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: var(--transition);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== BOUTONS (identique à votre site) ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            gap: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(37, 99, 235, 0.4);
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* ===== HEADER & NAVIGATION (identique) ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            transition: var(--transition);
+        }
+
+        .header-scrolled {
+            padding: 10px 0;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            transition: var(--transition);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            height: 55px;
+            width: auto;
+            border-radius: 8px;
+        }
+
+        .logo-text h1 {
+            font-size: 1.6rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .logo-text p {
+            font-size: 0.85rem;
+            color: var(--gray);
+            margin: 0;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark);
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary);
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* ===== HERO CONTACT SECTION ===== */
+        .hero-contact {
+            padding: 180px 0 100px;
+            background: linear-gradient(135deg, #eff6ff 0%, #f0f4ff 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-contact::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(37, 99, 235, 0.08) 0%, rgba(124, 58, 237, 0.05) 70%, transparent 100%);
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        .hero-contact-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-contact-title {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, var(--dark), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-contact-subtitle {
+            font-size: 1.5rem;
+            color: var(--gray);
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
+        }
+
+        /* ===== SECTIONS COMMON STYLES ===== */
+        .section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: var(--dark);
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            border-radius: 2px;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== CONTACT GRID ===== */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 80px;
+        }
+
+        @media (max-width: 992px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        /* ===== CONTACT FORM ===== */
+        .contact-form-container {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border-radius: var(--radius);
+            border: 2px solid var(--gray-light);
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: var(--transition);
+            background-color: var(--white);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .select-wrapper {
+            position: relative;
+        }
+
+        .select-wrapper::after {
+            content: '\f078';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+            pointer-events: none;
+        }
+
+        select.form-control {
+            appearance: none;
+            padding-right: 50px;
+        }
+
+        .form-check {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .form-check-input {
+            margin-top: 5px;
+            flex-shrink: 0;
+        }
+
+        .form-check-label {
+            font-size: 0.95rem;
+            color: var(--gray);
+        }
+
+        .form-check-label a {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        .form-check-label a:hover {
+            color: var(--primary-dark);
+        }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-info-container {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .contact-info-card {
+            background-color: var(--white);
+            border-radius: var(--radius-lg);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .contact-info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-info-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.5rem;
+        }
+
+        .contact-info-title {
+            font-size: 1.4rem;
+            color: var(--dark);
+        }
+
+        .contact-info-content p {
+            color: var(--gray);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .contact-details {
+            margin-top: 20px;
+        }
+
+        .contact-detail-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-detail-icon {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+            flex-shrink: 0;
+        }
+
+        .contact-detail-text {
+            color: var(--dark);
+        }
+
+        .contact-detail-text strong {
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        /* ===== MAP SECTION ===== */
+        .map-section {
+            margin-bottom: 80px;
+        }
+
+        .map-container {
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            height: 450px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* ===== FAQ SECTION ===== */
+        .faq-section {
+            background-color: #f8fafc;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background-color: var(--white);
+            border-radius: var(--radius);
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .faq-item:hover {
+            box-shadow: var(--shadow-lg);
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .faq-question h3 {
+            font-size: 1.2rem;
+            color: var(--dark);
+        }
+
+        .faq-toggle {
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: var(--transition);
+        }
+
+        .faq-answer {
+            padding: 0 30px;
+            max-height: 0;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+        .faq-answer.active {
+            padding: 0 30px 25px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            color: var(--gray);
+            line-height: 1.7;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            padding: 120px 0;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+            opacity: 0.2;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            border-color: var(--white);
+        }
+
+        /* ===== FOOTER (identique) ===== */
+        footer {
+            background-color: var(--dark);
+            color: var(--white);
+            padding-top: 80px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-col h3 {
+            font-size: 1.4rem;
+            margin-bottom: 25px;
+            color: var(--white);
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-col h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+        }
+
+        .footer-logo {
+            height: 50px;
+            margin-bottom: 20px;
+        }
+
+        .footer-about p {
+            color: #cbd5e1;
+            margin-bottom: 25px;
+            line-height: 1.8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(255, 255, 255, 0.08);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .social-link:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px);
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #cbd5e1;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links a:hover {
+            color: var(--white);
+            padding-left: 5px;
+        }
+
+        .footer-contact li {
+            margin-bottom: 20px;
+            color: #cbd5e1;
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+        }
+
+        .footer-contact i {
+            color: var(--primary);
+            font-size: 1.1rem;
+            margin-top: 3px;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding: 30px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #94a3b8;
+            font-size: 0.9rem;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 992px) {
+            .hero-contact-title {
+                font-size: 2.8rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2.4rem;
+            }
+            
+            .cta-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                width: 100%;
+                background-color: var(--white);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: var(--transition);
+                z-index: 999;
+            }
+            
+            .nav-links.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            
+            .hero-contact {
+                padding: 150px 0 80px;
+            }
+            
+            .hero-contact-title {
+                font-size: 2.4rem;
+            }
+            
+            .hero-contact-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section {
+                padding: 80px 0;
+            }
+            
+            .contact-form-container {
+                padding: 30px 20px;
+            }
+            
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .hero-contact-title {
+                font-size: 2rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .cta-title {
+                font-size: 2rem;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .map-container {
+                height: 350px;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        /* ===== FORM VALIDATION ===== */
+        .form-control.error {
+            border-color: var(--danger);
+        }
+
+        .form-control.success {
+            border-color: var(--success);
+        }
+
+        .error-message {
+            color: var(--danger);
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        /* ===== SCROLLBAR ===== */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--gray-light);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--secondary));
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--primary-dark), var(--secondary));
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header id="header">
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/logo-iut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="logo-img">
+                    <div class="logo-text">
+                        <h1>Alumni TC</h1>
+                        <p>IUT de Saint-Pierre - Réunion</p>
+                    </div>
+                </a>
+                
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <nav class="nav-links" id="navLinks">
+                    <a href="index.html" class="nav-link">Accueil</a>
+                    <a href="about.html" class="nav-link">À propos</a>
+                    <a href="promotions.html" class="nav-link">Promotions</a>
+                    <a href="events.html" class="nav-link">Évènements</a>
+                    <a href="directory.html" class="nav-link">Annuaire</a>
+                    <a href="contact.html" class="nav-link active">Contact</a>
+                    <a href="login.html" class="btn btn-primary" style="padding: 12px 24px;">Espace membre</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO CONTACT SECTION -->
+    <section class="hero-contact">
+        <div class="container">
+            <div class="hero-contact-content fade-in">
+                <h1 class="hero-contact-title">Contactez-nous</h1>
+                <p class="hero-contact-subtitle">
+                    Une question sur le réseau Alumni TC ? Une demande de partenariat ? 
+                    Vous souhaitez devenir mentor ou simplement nous faire part de vos idées ? 
+                    Nous sommes à votre écoute.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT SECTION -->
+    <section class="section" id="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <!-- Formulaire de contact -->
+                <div class="contact-form-container fade-in">
+                    <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--dark);">Envoyez-nous un message</h2>
+                    
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="subject" class="form-label">Sujet de votre message *</label>
+                            <div class="select-wrapper">
+                                <select id="subject" name="subject" class="form-control" required>
+                                    <option value="" disabled selected>Sélectionnez un sujet</option>
+                                    <option value="general">Question générale</option>
+                                    <option value="membership">Adhésion au réseau</option>
+                                    <option value="mentorship">Devenir mentor</option>
+                                    <option value="partnership">Partenariat entreprise</option>
+                                    <option value="job-offer">Proposer une offre d'emploi</option>
+                                    <option value="event">Organiser un événement</option>
+                                    <option value="technical">Problème technique</option>
+                                    <option value="other">Autre</option>
+                                </select>
+                            </div>
+                            <div class="error-message" id="subjectError">Veuillez sélectionner un sujet</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="firstName" class="form-label">Prénom *</label>
+                            <input type="text" id="firstName" name="firstName" class="form-control" placeholder="Votre prénom" required>
+                            <div class="error-message" id="firstNameError">Veuillez entrer votre prénom</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="lastName" class="form-label">Nom *</label>
+                            <input type="text" id="lastName" name="lastName" class="form-control" placeholder="Votre nom" required>
+                            <div class="error-message" id="lastNameError">Veuillez entrer votre nom</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email" class="form-label">Email *</label>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="votre@email.com" required>
+                            <div class="error-message" id="emailError">Veuillez entrer une adresse email valide</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="promotion" class="form-label">Votre promotion (facultatif)</label>
+                            <input type="text" id="promotion" name="promotion" class="form-control" placeholder="Ex: TC 2020-2021">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message" class="form-label">Votre message *</label>
+                            <textarea id="message" name="message" class="form-control" placeholder="Décrivez-nous votre demande..." required></textarea>
+                            <div class="error-message" id="messageError">Veuillez écrire votre message</div>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="privacy" name="privacy" class="form-check-input" required>
+                            <label for="privacy" class="form-check-label">
+                                J'accepte que mes données personnelles soient utilisées pour traiter ma demande, conformément à la 
+                                <a href="privacy.html">politique de confidentialité</a>.
+                            </label>
+                        </div>
+                        
+                        <div class="form-check">
+                            <input type="checkbox" id="newsletter" name="newsletter" class="form-check-input">
+                            <label for="newsletter" class="form-check-label">
+                                Je souhaite recevoir la newsletter mensuelle du réseau Alumni TC.
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 20px;">
+                            <i class="fas fa-paper-plane"></i> Envoyer le message
+                        </button>
+                        
+                        <div id="formSuccess" style="display: none; margin-top: 20px; padding: 15px; background-color: rgba(16, 185, 129, 0.1); color: var(--success); border-radius: var(--radius); text-align: center;">
+                            <i class="fas fa-check-circle"></i> Message envoyé avec succès ! Nous vous répondrons dans les 48 heures.
+                        </div>
+                        
+                        <div id="formError" style="display: none; margin-top: 20px; padding: 15px; background-color: rgba(239, 68, 68, 0.1); color: var(--danger); border-radius: var(--radius); text-align: center;">
+                            <i class="fas fa-exclamation-circle"></i> Une erreur est survenue. Veuillez réessayer.
+                        </div>
+                    </form>
+                </div>
+                
+                <!-- Informations de contact -->
+                <div class="contact-info-container">
+                    <div class="contact-info-card fade-in delay-1">
+                        <div class="contact-info-header">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h3 class="contact-info-title">Nous rencontrer</h3>
+                        </div>
+                        <div class="contact-info-content">
+                            <p>Le réseau Alumni TC est hébergé au département Techniques de Commercialisation de l'IUT de Saint-Pierre.</p>
+                            <div class="contact-details">
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-university contact-detail-icon"></i>
+                                    <div class="contact-detail-text">
+                                        <strong>IUT de Saint-Pierre</strong>
+                                        Campus universitaire<br>
+                                        97410 Saint-Pierre, La Réunion
+                                    </div>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-clock contact-detail-icon"></i>
+                                    <div class="contact-detail-text">
+                                        <strong>Horaires d'ouverture</strong>
+                                        Lundi - Vendredi : 8h30 - 17h30<br>
+                                        Samedi : Fermé
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card fade-in delay-2">
+                        <div class="contact-info-header">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-headset"></i>
+                            </div>
+                            <h3 class="contact-info-title">Nous contacter</h3>
+                        </div>
+                        <div class="contact-info-content">
+                            <p>Plusieurs moyens pour entrer en contact avec l'équipe du réseau Alumni TC.</p>
+                            <div class="contact-details">
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-envelope contact-detail-icon"></i>
+                                    <div class="contact-detail-text">
+                                        <strong>Email général</strong>
+                                        contact@alumni-tc.re
+                                    </div>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-phone contact-detail-icon"></i>
+                                    <div class="contact-detail-text">
+                                        <strong>Téléphone</strong>
+                                        +262 262 96 90 00 (standard IUT)
+                                    </div>
+                                </div>
+                                <div class="contact-detail-item">
+                                    <i class="fas fa-users contact-detail-icon"></i>
+                                    <div class="contact-detail-text">
+                                        <strong>Réseaux sociaux</strong>
+                                        @AlumniTC974 (LinkedIn, Instagram)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-card fade-in delay-3">
+                        <div class="contact-info-header">
+                            <div class="contact-info-icon">
+                                <i class="fas fa-question-circle"></i>
+                            </div>
+                            <h3 class="contact-info-title">Besoin d'aide ?</h3>
+                        </div>
+                        <div class="contact-info-content">
+                            <p>Consultez notre FAQ pour trouver rapidement des réponses aux questions les plus fréquentes.</p>
+                            <a href="#faq" class="btn btn-secondary" style="margin-top: 15px;">
+                                <i class="fas fa-list"></i> Voir la FAQ
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Carte Google Maps -->
+            <div class="map-section fade-in">
+                <h2 style="font-size: 2rem; margin-bottom: 30px; color: var(--dark); text-align: center;">Notre localisation</h2>
+                <div class="map-container">
+                    <!-- Intégration Google Maps (lien réel de l'IUT de Saint-Pierre) -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7440.45271343844!2d55.47631067608149!3d-21.33169759284279!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2178326c5b3c7cc7%3A0xe1c11193926c971a!2sIUT%20de%20Saint-Pierre!5e0!3m2!1sfr!2sfr!4v1708286714816!5m2!1sfr!2sfr" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section faq-section" id="faq">
+        <div class="container">
+            <div class="section-title fade-in">
+                <h2>Questions fréquentes</h2>
+                <p>Retrouvez les réponses aux questions les plus courantes sur le réseau Alumni TC</p>
+            </div>
+            
+            <div class="faq-container">
+                <div class="faq-item fade-in">
+                    <div class="faq-question" onclick="toggleFAQ(1)">
+                        <h3>Comment puis-je rejoindre le réseau Alumni TC ?</h3>
+                        <i class="fas fa-chevron-down faq-toggle" id="toggleIcon1"></i>
+                    </div>
+                    <div class="faq-answer" id="faqAnswer1">
+                        <p>Pour rejoindre le réseau, il suffit de créer un compte sur notre plateforme via le formulaire d'inscription. L'accès est réservé aux anciens étudiants du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre. Vous devrez fournir votre numéro d'étudiant ou votre promotion pour validation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-1">
+                    <div class="faq-question" onclick="toggleFAQ(2)">
+                        <h3>Le réseau Alumni TC est-il payant ?</h3>
+                        <i class="fas fa-chevron-down faq-toggle" id="toggleIcon2"></i>
+                    </div>
+                    <div class="faq-answer" id="faqAnswer2">
+                        <p>Non, l'adhésion au réseau Alumni TC est entièrement gratuite. Notre objectif est de favoriser les échanges et l'entraide au sein de la communauté TC sans barrière financière. Certains événements spécifiques peuvent cependant avoir un coût de participation pour couvrir les frais d'organisation.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-2">
+                    <div class="faq-question" onclick="toggleFAQ(3)">
+                        <h3>Comment devenir mentor pour les étudiants actuels ?</h3>
+                        <i class="fas fa-chevron-down faq-toggle" id="toggleIcon3"></i>
+                    </div>
+                    <div class="faq-answer" id="faqAnswer3">
+                        <p>Pour devenir mentor, rendez-vous sur votre espace membre et cochez l'option "Disponible pour mentorat" dans vos préférences. Vous pourrez ensuite préciser vos domaines d'expertise et votre disponibilité. Les étudiants pourront alors vous contacter via la plateforme pour des conseils d'orientation ou professionnels.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-3">
+                    <div class="faq-question" onclick="toggleFAQ(4)">
+                        <h3>Mon entreprise souhaite proposer des offres d'emploi, comment procéder ?</h3>
+                        <i class="fas fa-chevron-down faq-toggle" id="toggleIcon4"></i>
+                    </div>
+                    <div class="faq-answer" id="faqAnswer4">
+                        <p>Les entreprises partenaires peuvent diffuser gratuitement leurs offres d'emploi, stages ou alternances auprès de notre communauté. Contactez-nous via le formulaire en sélectionnant "Partenariat entreprise" ou directement à l'adresse entreprises@alumni-tc.re. Nous vous enverrons les modalités de publication.</p>
+                    </div>
+                </div>
+                
+                <div class="faq-item fade-in delay-1">
+                    <div class="faq-question" onclick="toggleFAQ(5)">
+                        <h3>Comment signaler une promotion manquante dans l'annuaire ?</h3>
+                        <i class="fas fa-chevron-down faq-toggle" id="toggleIcon5"></i>
+                    </div>
+                    <div class="faq-answer" id="faqAnswer5">
+                        <p>Si votre promotion n'apparaît pas dans notre annuaire, contactez-nous en précisant l'année de diplôme et le nombre d'étudiants. Nous mettrons à jour notre base de données et vous aiderons à contacter vos anciens camarades pour les inviter à rejoindre le réseau.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section" id="cta">
+        <div class="container">
+            <div class="cta-content fade-in">
+                <h2 class="cta-title">Prêt à rejoindre la communauté ?</h2>
+                <p class="cta-text">Inscrivez-vous gratuitement sur la plateforme Alumni TC pour retrouver vos anciens camarades, échanger avec votre promotion et bénéficier des services du réseau.</p>
+                
+                <div class="cta-buttons">
+                    <a href="register.html" class="btn btn-primary" style="background: var(--white); color: var(--primary);">
+                        <i class="fas fa-user-plus"></i> Créer mon profil
+                    </a>
+                    <a href="directory.html" class="btn btn-outline">
+                        <i class="fas fa-search"></i> Explorer l'annuaire
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <img src="images/logo-lut-blanc.jpg" alt="Logo IUT Saint-Pierre" class="footer-logo">
+                    <div class="footer-about">
+                        <p>Réseau Alumni du BUT Techniques de Commercialisation de l'IUT de Saint-Pierre, La Réunion. Une plateforme dédiée à la connexion, l'échange et l'entraide entre anciens étudiants.</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="#" class="social-link" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="social-link" aria-label="Twitter">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Navigation</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html"><i class="fas fa-chevron-right"></i> Accueil</a></li>
+                        <li><a href="about.html"><i class="fas fa-chevron-right"></i> À propos</a></li>
+                        <li><a href="promotions.html"><i class="fas fa-chevron-right"></i> Promotions</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Évènements</a></li>
+                        <li><a href="directory.html"><i class="fas fa-chevron-right"></i> Annuaire</a></li>
+                        <li><a href="contact.html"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Services</h3>
+                    <ul class="footer-links">
+                        <li><a href="mentorship.html"><i class="fas fa-chevron-right"></i> Programme de mentorat</a></li>
+                        <li><a href="jobs.html"><i class="fas fa-chevron-right"></i> Offres d'emploi</a></li>
+                        <li><a href="events.html"><i class="fas fa-chevron-right"></i> Calendrier des événements</a></li>
+                        <li><a href="resources.html"><i class="fas fa-chevron-right"></i> Ressources professionnelles</a></li>
+                        <li><a href="partners.html"><i class="fas fa-chevron-right"></i> Partenariats</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h3>Contact</h3>
+                    <ul class="footer-contact">
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>IUT de Saint-Pierre</strong><br>
+                                Campus universitaire<br>
+                                97410 Saint-Pierre, La Réunion
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <div>+262 262 96 90 00</div>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <div>contact@alumni-tc.re</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Réseau Alumni TC - IUT de Saint-Pierre. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 0.85rem;">Projet académique - BUT Techniques de Commercialisation | <a href="privacy.html" style="color: #94a3b8; text-decoration: underline;">Politique de confidentialité</a> | <a href="terms.html" style="color: #94a3b8; text-decoration: underline;">Mentions légales</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // ===== MOBILE MENU TOGGLE =====
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const navLinks = document.getElementById('navLinks');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            mobileMenuBtn.innerHTML = navLinks.classList.contains('active') 
+                ? '<i class="fas fa-times"></i>' 
+                : '<i class="fas fa-bars"></i>';
+        });
+        
+        // Fermer le menu mobile en cliquant sur un lien
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // ===== HEADER SCROLL EFFECT =====
+        const header = document.getElementById('header');
+        
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                header.classList.add('header-scrolled');
+            } else {
+                header.classList.remove('header-scrolled');
+            }
+        });
+        
+        // ===== FAQ TOGGLE FUNCTION =====
+        function toggleFAQ(faqNumber) {
+            const answer = document.getElementById('faqAnswer' + faqNumber);
+            const icon = document.getElementById('toggleIcon' + faqNumber);
+            
+            if (answer.classList.contains('active')) {
+                answer.classList.remove('active');
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                // Fermer toutes les autres FAQ
+                document.querySelectorAll('.faq-answer').forEach(faq => {
+                    faq.classList.remove('active');
+                });
+                document.querySelectorAll('.faq-toggle').forEach(toggle => {
+                    toggle.style.transform = 'rotate(0deg)';
+                });
+                
+                // Ouvrir celle cliquée
+                answer.classList.add('active');
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+        
+        // ===== FORM VALIDATION =====
+        const contactForm = document.getElementById('contactForm');
+        const formSuccess = document.getElementById('formSuccess');
+        const formError = document.getElementById('formError');
+        
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Réinitialiser les erreurs
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.classList.remove('show');
+            });
+            document.querySelectorAll('.form-control').forEach(input => {
+                input.classList.remove('error', 'success');
+            });
+            
+            let isValid = true;
+            
+            // Validation sujet
+            const subject = document.getElementById('subject');
+            if (!subject.value) {
+                document.getElementById('subjectError').classList.add('show');
+                subject.classList.add('error');
+                isValid = false;
+            } else {
+                subject.classList.add('success');
+            }
+            
+            // Validation prénom
+            const firstName = document.getElementById('firstName');
+            if (!firstName.value.trim()) {
+                document.getElementById('firstNameError').classList.add('show');
+                firstName.classList.add('error');
+                isValid = false;
+            } else {
+                firstName.classList.add('success');
+            }
+            
+            // Validation nom
+            const lastName = document.getElementById('lastName');
+            if (!lastName.value.trim()) {
+                document.getElementById('lastNameError').classList.add('show');
+                lastName.classList.add('error');
+                isValid = false;
+            } else {
+                lastName.classList.add('success');
+            }
+            
+            // Validation email
+            const email = document.getElementById('email');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!email.value.trim() || !emailRegex.test(email.value)) {
+                document.getElementById('emailError').classList.add('show');
+                email.classList.add('error');
+                isValid = false;
+            } else {
+                email.classList.add('success');
+            }
+            
+            // Validation message
+            const message = document.getElementById('message');
+            if (!message.value.trim()) {
+                document.getElementById('messageError').classList.add('show');
+                message.classList.add('error');
+                isValid = false;
+            } else {
+                message.classList.add('success');
+            }
+            
+            // Validation case à cocher
+            const privacy = document.getElementById('privacy');
+            if (!privacy.checked) {
+                privacy.parentElement.style.color = 'var(--danger)';
+                isValid = false;
+            } else {
+                privacy.parentElement.style.color = '';
+            }
+            
+            if (isValid) {
+                // Simulation d'envoi (dans un projet réel, utiliser fetch() vers un backend)
+                console.log('Formulaire soumis avec succès !');
+                console.log({
+                    subject: subject.value,
+                    firstName: firstName.value,
+                    lastName: lastName.value,
+                    email: email.value,
+                    promotion: document.getElementById('promotion').value,
+                    message: message.value,
+                    newsletter: document.getElementById('newsletter').checked
+                });
+                
+                // Afficher message de succès
+                formSuccess.style.display = 'block';
+                formError.style.display = 'none';
+                
+                // Réinitialiser le formulaire après 3 secondes
+                setTimeout(() => {
+                    contactForm.reset();
+                    formSuccess.style.display = 'none';
+                    document.querySelectorAll('.form-control').forEach(input => {
+                        input.classList.remove('success');
+                    });
+                }, 5000);
+            } else {
+                formError.style.display = 'block';
+                formSuccess.style.display = 'none';
+                
+                // Scroll vers la première erreur
+                const firstError = document.querySelector('.error');
+                if (firstError) {
+                    firstError.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            }
+        });
+        
+        // ===== ANIMATION ON SCROLL =====
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observer les éléments à animer
+        document.querySelectorAll('.section-title, .contact-form-container, .contact-info-card, .map-section, .faq-item').forEach(el => {
+            observer.observe(el);
+        });
+        
+        // ===== SMOOTH SCROLL =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                if (this.getAttribute('href') !== '#') {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId.startsWith('#')) {
+                        const targetElement = document.querySelector(targetId);
+                        if (targetElement) {
+                            window.scrollTo({
+                                top: targetElement.offsetTop - 100,
+                                behavior: 'smooth'
+                            });
+                        }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
