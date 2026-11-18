@@ -1,0 +1,1 @@
+{ "name": "delta", "version": "0.1.0", "description": "Panneau Delta : avance ou retard de ta conso Claude sur la fenêtre 5h et la semaine, coût et contexte", "types": "./types/index.d.ts" }
